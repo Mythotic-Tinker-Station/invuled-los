@@ -1,0 +1,65 @@
+ACTOR HexDragon : Dragon replaces Dragon
+{
+   Health 2000
+   Mass 2000
+   Speed 10
+   Minmissilechance 80
+   Painchance 0
+   +NORADIUSDMG
+   +DONTRIP
+   +QUICKTORETALIATE
+   States
+   {
+   Spawn:
+     DRAG ABCD 4 A_Look
+     goto See
+   See:
+     DRAG AABB 2 A_Chase
+     DRAG C 0 A_PlaySound("gibbage/bwingflap")
+     DRAG CCDDCCBB 2 A_Chase
+     DRAG AABB 2 A_Chase
+     DRAG C 0 A_PlaySound("gibbage/bwingflap")
+     DRAG CCDDCCBB 2 A_Chase
+     loop
+   Missile:
+     DRAG E 6 A_FaceTarget
+     DRAG E 0 A_PlaySound("dragonattack")
+     DRAG E 5 A_CustomMissile("WyvernBall", 32, 0, 0)
+     DRAG E 0 A_FaceTarget
+     DRAG E 5 A_CustomMissile("WyvernBall", 32, 0, 0)
+     DRAG E 0 A_FaceTarget
+     DRAG E 5 A_CustomMissile("WyvernBall", 32, 0, 0)
+     DRAG E 0 A_FaceTarget
+     goto See
+   Death:
+    DRAG G 5 A_Scream
+    DRAG H 4 A_NoBlocking
+    DRAG I 4
+    DRAG J 4 A_DragonCheckCrash
+    Crash:
+    DRAG KL 5 A_UnsetSolid
+    DRAG M -1
+    Stop
+    }
+}
+
+ACTOR Wyvernball : Demon1FX1
+{
+  Damage 6
+  Speed 24
+  Damagetype Normal
+  DeathSound "DragonFireballExplode"
+  Obituary "%o was incinerated by the Death Wyvern."
+  Decal CacoScorch
+  States
+  {
+  Spawn:
+    DRFX ABCDEF 4 Bright
+    Loop
+  Death:
+    DRFX GHI 4 Bright
+    DRFX J 4 Bright
+    DRFX KL 3 Bright
+    Stop
+  }
+}

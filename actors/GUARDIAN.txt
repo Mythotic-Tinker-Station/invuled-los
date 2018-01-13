@@ -1,0 +1,99 @@
+Actor Guardian 30102 
+{
+  Health 80
+  Radius 16
+  Height 32
+  Mass 150
+  Speed 8
+  PainChance 64
+  Monster
+  Obituary "%o got fried by a Guardian Cube."
+  +NoGravity
+  +Float
+  +DontFall
+  +NoBlood
+  +DontHurtSpecies
+  SeeSound "monster/cubsit"
+  PainSound "weapons/bounc1"
+  ActiveSound "monster/cubfly"
+  DeathSound "monster/cubdth"
+  SpawnID 172
+  States 
+  { 
+  Spawn: 
+    CUBE A 10 A_Look 
+    Loop 
+  See: 
+    CUBE ABC 5 A_Chase
+    Loop 
+  Missile: 
+    CUBE D 5 Bright A_FaceTarget 
+    CUBE E 0 Bright A_CustomMissile("CubeShot",10,4,0,1)
+    CUBE E 4 Bright A_CustomMissile("CubeShot",10,-4,0,1)
+    CUBE D 4 Bright A_FaceTarget 
+    CUBE E 0 Bright A_CustomMissile("CubeShot",10,4,0,1)
+    CUBE E 4 Bright A_CustomMissile("CubeShot",10,-4,0,1)
+    CUBE D 4 Bright A_FaceTarget  
+    CUBE E 0 Bright A_CustomMissile("CubeShot",10,4,0,1)
+    CUBE E 4 Bright A_CustomMissile("CubeShot",10,-4,0,1)
+    CUBE D 4 Bright A_FaceTarget
+    Goto See 
+  Pain: 
+    CUBE D 3 
+    CUBE D 3 A_Pain 
+    Goto See 
+  Death:
+    CUBE E 0 Bright A_NoBlocking
+    CUBE E 0 Bright A_SetFloorClip
+    CUBE E 6 Bright A_Scream 
+    CUBE FGH 6 Bright
+    Stop 
+  } 
+}
+
+Actor CubeShot
+{
+  Radius 5
+  Height 5
+  Speed 15
+  Damage 1
+  DamageType Fire
+  RenderStyle Add
+  Alpha 0.85
+  Projectile
+  +ThruGhost
+  Seesound "weapons/firsfi"
+  DeathSound "weapons/maceex"
+  Obituary "%o got fried by a Guardian Cube."
+  States
+  {
+  Spawn:
+    CBAL AB 3 Bright A_SpawnItemEx("CubePuff",0,0,0,0,0,0,0,128)
+    Loop
+  Death:
+    CBAL CDEFG 3 Bright
+    Stop
+  }
+}
+
+Actor CubePuff
+{   
+  Radius 2
+  Height 2
+  Speed 0
+  Scale 1.0
+  Projectile
+  RenderStyle Add
+  Alpha 0.67
+  States
+  {
+  Spawn:
+    CBAL HIJ 3 Bright
+    Stop 
+  }
+}
+
+actor GuardianCubeSpawner : CustomMonsterInvasionSpot 26007
+{	
+DropItem Guardian
+}

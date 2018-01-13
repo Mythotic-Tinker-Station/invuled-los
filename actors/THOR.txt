@@ -1,0 +1,569 @@
+/////Thor Decorate\\\\\
+
+ACTOR Thor 27043
+{
+  OBITUARY "%o witnessed the true power of Thor."
+  Health 3000
+  Radius 25
+  Height 75//50
+  Mass 200
+  Speed 12//4
+  PainChance 25//100
+  SEESOUND "thor/sight"
+  PAINSOUND "thor/pain"
+  DEATHSOUND "thor/death"
+  ACTIVESOUND "thor/active"
+  BloodColor "00 00 20"
+  MONSTER
+  +Boss
+  +FloorClip
+  +NoRadiusDMG
+  +DontMorph
+  +MissileMore
+  +NoIceDeath
+  states
+  {
+  Spawn:
+    THOR M 0
+    THOR M 0 A_CustomMissile("LightningBallC1",200,0,0,2,0)
+    THOR M 0 A_CustomMissile("LightningBallC2",200,0,180,2,0)
+	Goto Idle
+  Idle:
+	THOR M 10 A_Look
+    Loop
+  See:
+    THOR MNOP 5 A_Chase
+    Loop
+  Missile:
+	TNT1 A 0 A_PlaySound("thor/attack")
+    TNT1 A 0 A_Jump(64, "LightningColumns")
+    TNT1 A 0 A_Jump(96, "GroundSeekers")
+    TNT1 A 0 A_Jump(64, "Filibuster")
+    TNT1 A 0 A_Jump(128, "LightningStream")
+	Goto LightningBall
+//attack 1; fragmenting lightning ball
+  LightningBall:
+    THOR R 5
+	THOR S 5 A_FaceTarget
+    THOR T 5 BRIGHT A_CustomMissile("LightningBallL",32,0,0,2,0)
+	THOR T 5
+    Goto See
+//attack 2; lightning streams
+  LightningStream:
+    THOR RS 5 A_FaceTarget
+	THOR T 5 A_FaceTarget
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,-45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,-45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,-45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,-45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,-45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,45,0,0) 
+    THOR T 1 BRIGHT A_CustomMissile("MiniLightningPuff",55,-45,0,0)  
+	TNT1 A 0 A_GiveInventory("ThorCounter", 1)
+	TNT1 A 0 A_JumpIfInventory("ThorCounter", 9, "EndStream")
+	Goto LightningStream+2
+  EndStream:
+	TNT1 A 0 A_TakeInventory("ThorCounter", 9)
+	THOR T 5
+    Goto See
+//attack 3, stationary/invulnerable mode
+  Filibuster:
+    THOR ZY 5 A_FaceTarget
+    THOR X 8 BRIGHT A_FaceTarget
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,45,0,0)
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,135,0,0)
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,225,0,0)
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,315,0,0)
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,0,0,0)
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,90,0,0)
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,160,0,0)
+    THOR Z 0 A_CustomMissile("GroundLightning",0,0,270,0,0)
+    THOR Z 0 A_SetReflectiveInvulnerable
+	TNT1 A 0 A_SetTranslucent(0.5, 1)
+	TNT1 A 0 A_ChangeFlag("Visibilitypulse", 1)
+	Goto FilibusterLoop
+  FilibusterLoop:    
+	THOR Z 35 A_Stop
+    THOR RS 3 A_FaceTarget
+    THOR T 8 BRIGHT A_CustomMissile("LightningRod1",55,45,0,0,0)
+    THOR T 0 BRIGHT A_CustomMissile("LightningRod1",55,-45,0,0,0)
+    THOR T 2 BRIGHT A_CustomMissile("LightningBallS",55,45,0,0,0)
+    THOR T 0 BRIGHT A_CustomMissile("LightningBallS",55,-45,0,0,0)
+    THOR T 2 BRIGHT A_CustomMissile("LightningBallS",55,45,0,0,0)
+    THOR T 0 BRIGHT A_CustomMissile("LightningBallS",55,-45,0,0,0)
+	TNT1 A 0 A_GiveInventory("ThorCounter", 1)
+	TNT1 A 0 A_JumpIfInventory("ThorCounter", 3, "FilibusterEnd")
+    THOR SR 3
+    Goto FilibusterLoop
+  FilibusterEnd:
+	TNT1 A 0 A_UnSetReflectiveInvulnerable
+	TNT1 A 0 A_SetTranslucent(1.0, 0)
+	TNT1 A 0 A_ChangeFlag("Visibilitypulse", 0)
+	TNT1 A 0 A_TakeInventory("ThorCounter", 9)
+	THOR SR 3
+    THOR YZM 10
+    Goto See
+//attack 4, floor-hugging seekers
+  GroundSeekers:
+    THOR ZY 5 A_FaceTarget
+    THOR X 8 BRIGHT A_FaceTarget
+    THOR X 0 BRIGHT A_CustomMissile("GroundLightningTracer",0,random(-20,20),random(-45,45),0,0)
+    THOR X 0 BRIGHT A_CustomMissile("GroundLightningTracer",0,random(-20,20),random(-45,45),0,0)
+    THOR X 0 BRIGHT A_CustomMissile("GroundLightningTracer",0,random(-20,20),random(-45,45),0,0)
+	THOR X 8 Bright A_FaceTarget
+    Goto See
+//attack 5, lightning columns
+  LightningColumns:
+    THOR RS 5 A_FaceTarget
+	TNT1 A 0 A_CustomMissile("LightningRod3", 0, 0, 0, CMF_AIMOFFSET)
+	TNT1 A 0 A_CustomMissile("LightningRod3", 0, 45, random(-25, -15), CMF_AIMOFFSET)
+	TNT1 A 0 A_CustomMissile("LightningRod3", 0, -45, random(15, 25), CMF_AIMOFFSET)
+	THOR T 5 Bright A_FaceTarget
+	THOR T 5
+	Goto See
+  Pain:
+    THOR Q 10 A_Pain
+	TNT1 A 0 A_TakeInventory("ThorCounter", 9)
+    Goto See
+  Death:
+	TNT1 A 0 A_SetTranslucent(1.0, 0)
+	TNT1 A 0 A_ChangeFlag("Visibilitypulse", 0)
+    THR2 A 8 A_Scream
+    THR2 B 8
+    THR2 C 8
+    THR2 D 6
+    THR2 E 6
+    THR2 F 6
+    THR2 D 6
+    THR2 E 6
+    THR2 F 6
+    THR2 D 6
+    THR2 E 6
+    THR2 F 6
+    THR2 G 4 BRIGHT A_PlaySound("thor/thunder")
+    THR2 H 6 A_NoBlocking
+    THR2 I 6
+    THR2 J 6
+    THR2 K 6
+    THR2 L 6
+    THR2 M 6
+    THR2 N 6
+	TNT1 A 0 A_SpawnItemEx("ThorCorpse", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+	//note that he needs to Stop and "disappear" to shut off his orbiters; a dummy corpse is left instead (see below)
+    Stop
+  }
+}
+
+//used to manage Thor's "looping" attacks
+Actor ThorCounter : Inventory
+{
+  Inventory.MaxAmount 9
+}
+
+//dummy corpse
+Actor ThorCorpse
+{
+  Radius 25
+  Height 12
+  States
+  {
+  Spawn:
+    THR2 O -1
+    Loop
+  }
+}
+
+//orbiters
+ACTOR LightningBallC1
+{
+     +Noclip
+     Scale .35
+     Speed 5
+     RENDERSTYLE Add
+     Alpha 0.50     
+     PROJECTILE
+     states
+     {
+     Spawn:
+		 ZOT3 AABBCC 1 BRIGHT A_SpawnItemEx("LightningBallC1T", 0, 0, 0, 0, 0, 0, 0, 128)
+         ZOT3 A 0 A_CustomMissile("LightningBallC1", 0, 0, 75)
+         ZOT3 A 0 A_MissileAttack
+         Stop
+	 Death:
+		 TNT1 A 0
+		 Stop
+     }
+}
+
+ACTOR LightningBallC2
+{
+     +Noclip
+     Scale .28
+     Speed 5
+     RENDERSTYLE Add
+     Alpha 0.50     
+     PROJECTILE
+     states
+     {
+     Spawn:
+         ZOT3 AABBCC 1 BRIGHT A_SpawnItemEx("LightningBallC1T", 0, 0, 0, 0, 0, 0, 0, 128)
+         ZOT3 A 0 A_CustomMissile("LightningBallC2", 0, 0, -75)
+         ZOT3 A 0 A_MissileAttack
+         Stop
+	 Death:
+		 TNT1 A 0
+		 Stop
+	 }
+}
+
+//decorative particle shared by a few actors
+ACTOR LightningBallC1T
+{
+    RENDERSTYLE ADD
+    Alpha 0.4
+    PROJECTILE
+    +Noclip
+    states
+    {
+    Spawn:
+        DFFP GHIJKLMNOPQR 1 BRIGHT
+        Stop
+    }
+}
+
+//limited-range projectile spawned by his "filibuster" attack mode
+//has no collision; primary purpose is to continuously spawn damaging particles
+ACTOR GroundLightning
+{
+  Radius 4
+  Height 6
+  Speed 20
+  //Damage 6
+  RENDERSTYLE Add
+  Alpha 0.40
+  ReactionTime 20//53
+  SEESOUND "thor/attackr1"
+  PROJECTILE
+  +FloorHugger
+  +Noclip
+  //+Ripper
+  states
+  {
+  Spawn:
+    ICWS ABCDEFGHI 1 BRIGHT A_SpawnItemEx("GroundTrail",0,0,0,0,0,0,0,128)
+    ICWS A 0 BRIGHT
+    ICWS A 0 BRIGHT A_Stop
+	Goto ProjectileLoop
+  ProjectileLoop:
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS A 0 BRIGHT A_CustomMissile("GroundSmoke",0,0,0,2,360)
+	TNT1 A 0 A_CountDown
+	Loop
+  Death:
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS A 0 BRIGHT
+    Stop
+  }
+}
+
+//trail spawned by the GroundLightning actor; harmless
+ACTOR GroundTrail
+{
+  Radius 2
+  Height 3
+  RENDERSTYLE Add
+  Alpha 0.20
+  ReactionTime 20//49
+  PROJECTILE
+  +FloorHugger
+  states
+  {
+  Spawn:
+    ICWS JKLMNOPQR 1 BRIGHT
+    ICWS A 0 BRIGHT
+	TNT1 A 0 A_CountDown
+	Loop
+  Death:
+    ICWS JKLMNOPQR 1 BRIGHT
+    Stop
+  }
+}
+
+//actor spawned by the GroundLightning projectile; deals damage, and occasionally (25%) spawns additional particles
+ACTOR GroundSmoke
+{
+  Radius 12
+  Height 12
+  Speed 15
+  Damage 1//5
+  RENDERSTYLE Add
+  Alpha 0.30
+  SEESOUND "thor/smoke"
+  PROJECTILE
+  +Ripper
+  //+Noclip
+  states
+  {
+  Spawn:
+    DFFP ABCDEFGHIJKLMNOPQR 1 BRIGHT
+    DFFP A 0 BRIGHT A_Jump(64,1)
+    Stop
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,0,2,-250)
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,45,2,-250)
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,90,2,-250)
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,135,2,-250)
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,180,2,-250)
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,225,2,-250)
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,270,2,-250)
+    DFFP A 1 BRIGHT A_CustomMissile("SmokeLightning",0,0,315,2,-250)
+    Stop
+  }
+}
+
+//particles periodically spawned by the GroundSmoke projectile generated by the GroundLightning projectile
+ACTOR SmokeLightning
+{
+  Radius 16
+  Height 16
+  Speed 20
+  Damage 2//5
+  RENDERSTYLE Add
+  Alpha 0.40
+  Scale 0.75
+  SEESOUND "thor/spawnl"
+  DEATHSOUND "thor/hitl"
+  ACTIVESOUND "thor/activel"
+  PROJECTILE
+  states
+  {
+  Spawn:
+    ZOT3 ABC 2 BRIGHT
+    Loop
+  Death:
+    ZOT3 A 0 BRIGHT //A_Explode(50,150)
+    Stop
+  }
+}
+
+//small projectile
+ACTOR LightningBallS
+{
+  Radius 16
+  Height 16
+  Speed 20
+  Damage 5
+  RENDERSTYLE Add
+  Alpha 0.40
+  Scale 0.75
+  SEESOUND "thor/spawnl"
+  DEATHSOUND "thor/hitl"
+  ACTIVESOUND "thor/activel"
+  PROJECTILE
+  Decal RevenantScorch
+  states
+  {
+  Spawn:
+    ZOT3 ABCE 2 BRIGHT A_SpawnItemEx("LightningBallC1T", 0, 0, 0, 0, 0, 0, 0, 128)
+    Loop
+  Death:
+    ZAPS GHIJKL 2 BRIGHT
+    Stop
+  }
+}
+
+//faster small projectile
+ACTOR LightningRod1
+{
+  Radius 24
+  Height 24
+  Speed 30
+  Damage 3//5
+  RENDERSTYLE Add
+  Alpha 0.50
+  Scale 0.75
+  SEESOUND "thor/spawnl"
+  DEATHSOUND "thor/hitl"
+  ACTIVESOUND "thor/activel"
+  MissileType LightningBallC1T
+  MissileHeight 0
+  PROJECTILE
+  Decal RevenantScorch
+  states
+  {
+  Spawn:
+    ZAP6 ABC 2 BRIGHT
+    //ZAP6 A 0 BRIGHT A_MissileAttack
+    Loop
+  Death:
+    ZOTS ABCDEF 2 BRIGHT
+    Stop
+  }
+}
+
+//large projectile; spams smaller projectiles
+ACTOR LightningBallL
+{
+  Radius 30
+  Height 30
+  Speed 12
+  Damage 20
+  RENDERSTYLE Add
+  Alpha 0.75
+  ReactionTime 6
+  SEESOUND "thor/attackr3"
+  DEATHSOUND "thor/hitl"
+  ACTIVESOUND "thor/activel"
+  Decal "Scorch"
+  +SeekerMissile
+  +DoomBounce
+  PROJECTILE
+  states
+  {
+  Spawn:
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+    ZAP7 ABCDE 1 BRIGHT //A_SeekerMissile(20,20)
+	Goto ProjectileLoop
+  ProjectileLoop:
+    ZAP7 A 1 BRIGHT A_CustomMissile("LightningRod1",10,0,0,0,0)
+    ZAP7 B 1 BRIGHT A_CustomMissile("LightningRod1",10,0,20,0,0)
+    ZAP7 C 1 BRIGHT A_CustomMissile("LightningRod1",10,0,40,0,0)
+    ZAP7 D 1 BRIGHT A_CustomMissile("LightningRod1",10,0,60,0,0)
+    ZAP7 E 1 BRIGHT A_CustomMissile("LightningRod1",10,0,80,0,0)
+    ZAP7 A 1 BRIGHT A_CustomMissile("LightningRod1",10,0,100,0,0)
+    ZAP7 C 1 BRIGHT A_CustomMissile("LightningRod1",10,0,120,0,0)
+    ZAP7 D 1 BRIGHT A_CustomMissile("LightningRod1",10,0,140,0,0)
+    ZAP7 E 1 BRIGHT A_CustomMissile("LightningRod1",10,0,160,0,0)
+    ZAP7 A 1 BRIGHT A_CustomMissile("LightningRod1",10,0,180,0,0)
+    ZAP7 B 1 BRIGHT A_CustomMissile("LightningRod1",10,0,200,0,0)
+    ZAP7 C 1 BRIGHT A_CustomMissile("LightningRod1",10,0,220,0,0)
+    ZAP7 D 1 BRIGHT A_CustomMissile("LightningRod1",10,0,240,0,0)
+    ZAP7 E 1 BRIGHT A_CustomMissile("LightningRod1",10,0,260,0,0)
+    ZAP7 A 1 BRIGHT A_CustomMissile("LightningRod1",10,0,280,0,0)
+    ZAP7 B 1 BRIGHT A_CustomMissile("LightningRod1",10,0,300,0,0)
+    ZAP7 C 1 BRIGHT A_CustomMissile("LightningRod1",10,0,320,0,0)
+    ZAP7 D 1 BRIGHT A_CustomMissile("LightningRod1",10,0,340,0,0)
+    ZAP7 E 1 BRIGHT A_CustomMissile("LightningRod1",10,0,360,0,0)
+	ZAP7 ABCDEABCDEABCDEABCDEABCDE 1 BRIGHT//reduces spamminess
+	TNT1 A 0 A_CountDown
+	Loop
+  Death:
+    ZAPL ABCDEFG 2 BRIGHT
+    Stop
+  }
+}
+
+//small projectile produced by his "stream" attacks
+ACTOR MiniLightningPuff
+{
+    Radius 6
+    Height 10
+    Speed 14
+    Damage 1
+    PROJECTILE
+    RENDERSTYLE ADD
+    Alpha 0.67
+    SEESOUND "thor/smoke"
+    Decal PlasmaScorchLower
+    states
+    {
+    Spawn:
+        DFFP ABCDEFGH 4 BRIGHT
+    Death:
+        DFFP IJKLMNOPQR 4 BRIGHT
+        Stop
+    }
+}
+
+//floor-hugging tracer projectile
+ACTOR GroundLightningTracer
+{
+  Radius 4
+  Height 6
+  Speed 10
+  Damage 6
+  RENDERSTYLE Add
+  Alpha 0.40
+  ReactionTime 15//34
+  SEESOUND "thor/attackr2"
+  PROJECTILE
+  +FloorHugger
+  //+Noclip
+  //+Ripper
+  +SeekerMissile
+  states
+  {
+  Spawn:
+    ICWS ABCDEFGHI 1 BRIGHT A_SpawnItemEx("TracerTrail",0,0,0,0,0,0,0,128)
+	TNT1 A 0 A_Jump(128, 2)
+    ICWS A 0 BRIGHT A_SeekerMissile(90,90)
+    TNT1 A 0 A_CountDown
+	Loop
+  Death:
+    ICWS ABCDEFGHI 5 BRIGHT A_Stop
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    ICWS ABCDEFGHI 1 BRIGHT A_CustomMissile("GroundSmoke",0,10,random(0,360),2,random(80,100))
+    Stop
+  }
+}
+
+//modified trail with shorter duration
+ACTOR TracerTrail : GroundTrail
+{
+  ReactionTime 10
+}
+
+//this was originally unused; I used it in "LightningColumns"
+ACTOR LightningRod3
+{
+  Radius 24
+  Height 8
+  Damage 5
+  Speed 20
+  RENDERSTYLE Add
+  Alpha 0.40
+  SEESOUND "thor/spawnl"
+  DEATHSOUND "thor/hitl"
+  ACTIVESOUND "thor/activel"
+  PROJECTILE
+  Decal Scorch
+  //+SpawnCeiling
+  +FLOORHUGGER
+  states
+  {
+  Spawn:
+    ZOT1 ABCDE 2 BRIGHT
+    ZOT1 A 0 BRIGHT A_SpawnItemEx("LightningBallC1T", 0, 0, 0, 0, 0, 0, 0, 128)
+    Loop
+  Death:
+    ZOTS ABCDEF 2 BRIGHT A_Explode(60,50,0)
+    Stop
+  }
+}
+
+/////End Thor Decorate\\\\\
+
+actor ThorSpawner : CustomMonsterInvasionSpot 26009
+{	
+DropItem Thor
+}

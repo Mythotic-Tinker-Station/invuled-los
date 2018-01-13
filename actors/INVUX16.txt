@@ -1,0 +1,687 @@
+
+actor BuzzlerTurretSpawner : CustomMonsterInvasionSpot 670
+{	
+DropItem BuzzlerTurret
+}
+
+
+ACTOR BuzzlerTurret
+
+{
+   Health 500
+   Height 200
+   Radius 32
+   Mass 1000
+   Speed 0
+   Minmissilechance 30
+   MONSTER
+   +QUICKTORETALIATE
+   +DONTGIB
+   -PUSHABLE
+   +LOOKALLAROUND
+   +NOBLOOD
+   +COUNTKILL
+   Obituary "%o couldn't breach the kappa's static defenses."        //YE I STOLE FROM ZDWARS WHAT CHA GON' DO
+  States
+  {
+  Spawn:
+    TNT1 A 2 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    TNT1 A 0 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    TNT1 A 0 A_Look
+    loop
+       See:
+     TURR A 0 A_JumpIfTargetinLOS(2, 360)
+     
+    TNT1 A 2 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    TNT1 A 0 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+     TURR A 0 A_Jump(75, "Giveup")
+     TNT1 A 1 A_Chase
+     loop
+      Giveup:
+      
+    TNT1 A 2 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    TNT1 A 0 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+     DTUR A 0 A_ClearTarget         
+     goto See
+     
+   Idle:
+     DTUR A 0 A_LookEx(0, 0, 0, 0, 360, "See")
+	 DTUR AA 0 A_Wander
+    TNT1 A 2 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    TNT1 A 0 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+	 DTUR A 0 A_LookEx(0, 0, 0, 0, 360, "See")
+	 loop
+   Missile:
+   
+    TNT1 A 2 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    TNT1 A 0 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+     TNT1 A 0 A_FaceTarget
+     TROO G 0 A_CustomMissile ("KappaBall1", random(50,150), 0, 0, 0, 0)   
+        TROO G 0 A_CustomMissile ("KappaBall2", random(50,150), -3, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall3", random(50,150), 6, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall4", random(50,150), -9, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall5", random(50,150), 12, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall6", random(50,150), -15, 0, 0, 0)
+        TROO G 0 A_CustomMissile ("KappaBall6", random(50,150), 15, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall7", random(50,150), -12, 0, 0, 0)  
+     TROO G 0 A_CustomMissile ("KappaBall8", random(50,150), 9, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall9", random(50,150), -6, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall10", random(50,150), 3, 0, 0, 0)  
+     TROO G 0 A_CustomMissile ("KappaBall11", random(50,150), 0, 0, 0, 0)  
+          TURR A 0 A_Jump(100, "Giveup")
+     THT1 D 1 A_CPosRefire
+     goto Missile
+   Death:
+   TNT1 A 0
+   
+    TNT1 A 2 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    TNT1 A 0 A_SpawnItemEx("Firefly",random(-3,3),random(-3,3),random(0,200),random(-2,2),random(-2,2),random(-2,2),0)
+    Stop
+  }
+}
+
+
+
+ACTOR Firefly
+{
+  Radius 13
+  Height 8
+  Speed 25
+  +HEXENBOUNCE
+  -NOGRAVITY
+  damage 0
+  Gravity 0.2
+  scale 0.35
+  +RANDOMIZE
+  +RIPPER
+  +BLOODLESSIMPACT
+  +CLIENTSIDEONLY
+  RenderStyle Add 
+  States
+  {
+  Spawn:
+    APLS AB 5 Bright A_Fadeout(0.3)
+ Loop
+  }
+}
+
+
+ACTOR FireflyCannon : PlasmaRifle 669
+ {
+ Weapon.AmmoType "Clip"
+ Weapon.SlotNumber 4
+ Inventory.PickupMessage "Picked up a very strange gun!"
+ +AMMO_OPTIONAL
+ States
+ {
+ Ready:
+ PLSG A 1 A_WeaponReady
+ Loop
+ Deselect:
+ PLSG A 1 A_Lower
+ Loop
+ Select:
+ PLSG A 1 A_Raise
+ Loop
+ Fire:
+ PLSG A 0
+ PLSG A 0 A_JumpifInventory("Clip",1,"ActualFire")
+ PLSG A 6
+ PLSG A 0 A_FireCustomMissile("Wriggle",0,0,0,0,0,0)
+ Goto Ready
+ ActualFire:
+ PLSG A 0
+ PLSG A 6 A_TakeInventory("Clip",1)
+ PLSG A 0 A_FireCustomMissile("Wriggle",0,0,0,0,0,0)
+ PLSG A 0 A_FireCustomMissile("Wriggle",random(-7,7),0,0,0,0,random(-7,7))
+ PLSG A 0 A_FireCustomMissile("Wriggle",random(-7,7),0,0,0,0,random(-7,7))
+ PLSG A 0 A_FireCustomMissile("Wriggle",random(-7,7),0,0,0,0,random(-7,7))
+ Goto Ready
+ Spawn:
+ PLAS A -1
+ Stop
+ }
+ }
+
+ ACTOR Wriggle
+ {
+ +EXPLODEONWATER
+ +NOGRAVITY
+ +FLOATBOB
+ -HEXENBOUNCE
+ +BRIGHT
+  Projectile
+ Speed 10
+  RenderStyle Add
+  Alpha 0.7
+ Scale 0.6
+ Damage 1
+ Obituary "%o felt the power of %k's fireflies..."
+ Species "Player"
+ +THRUSPECIES
+ States
+ {
+ Spawn:
+ APLS A 1 A_SetAngle(-4 - angle)
+ APLS A 1 //ThrustThing(angle*256/360+64, 1, 0, 0)
+ APLS A 1 A_SetAngle(-2 - angle)//ThrustThing(angle*256/360+192, 1, 0, 0)
+ APLS A 1 A_FadeIn(0.2)
+ APLS B 1 A_SetAngle(-2 + angle)
+ APLS B 1 //ThrustThing(angle*256/360+192, 1, 0, 0)
+ APLS B 1 A_SetAngle(-4 + angle)//ThrustThing(angle*256/360+192, 2, 0, 0) //ThrustThing(angle*256/360+64, 1, 0, 0)
+ APLS B 1 A_FadeOut(0.2)
+ TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CStaffMissileSlither
+ LOOP
+ Spawn2:
+ APLS ABCD 1 Bright A_CStaffMissileSlither
+ Loop
+ Death:
+ TNT1 A 1
+ Stop
+ }
+ }
+
+actor WaterSpiritSpawner : CustomMonsterInvasionSpot 668
+{	
+DropItem WaterSpirit
+}
+
+ACTOR WaterSpirit
+{
+   Health 17500
+   Mass 528491 //<3 inception
+   Height 100
+   Radius 100
+   Speed 12
+   FloatSpeed 2
+   Painchance 0
+   BloodColor Gray
+   RenderStyle Translucent
+   Alpha 0.65
+   scale 1.7
+   Obituary "%o was vaporised by the water spirit."
+   AttackSound "alienspectre/blade"
+   SeeSound "alienspectre/sight"
+   PainSound "alienspectre/pain"
+   DeathSound "alienspectre/death"
+   ActiveSound "alienspectre/active"
+   Monster
+   +NOGRAVITY
+   +FLOAT
+   +NORADIUSDMG
+   +LOOKALLAROUND
+   +NOICEDEATH
+   +DONTRIP
+   +BOSS
+   -PUSHABLE
+   +SHADOW
+ States
+  {
+  Spawn:
+    ALN1 AB 4 Bright A_Look
+    ALN1 C 4 Bright A_SentinelBob
+    ALN1 DEF 4 Bright A_Look
+    ALN1 G 4 Bright A_SentinelBob
+    ALN1 HIJ 4 Bright A_Look
+    ALN1 K 4 Bright A_SentinelBob
+    Loop
+  See:
+    ALN1 AB 4 Bright A_Chase
+    ALN1 C 4 Bright A_SentinelBob
+    ALN1 DEF 4 Bright A_Chase
+    ALN1 G 4 Bright A_SentinelBob
+    ALN1 HIJ 4 Bright A_Chase
+    ALN1 K 4 Bright A_SentinelBob
+    ALN1 K 0 Bright A_Jump(200,"Fire1","Fire2")
+    Loop
+  Fire1:
+    ALN1 J 3 Bright A_FaceTarget
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-99,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-108,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-117,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,117,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,108,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,99,0,0,0)
+        ALN1 I 3 Bright
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-90,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-81,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-72,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,72,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,81,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,90,0,0,0)
+        ALN1 J 3 Bright
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-42,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-54,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-63,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,63,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,54,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,45,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-36,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-18,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-27,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,27,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,18,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,36,0,0,0)
+    ALN1 I 3 Bright
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,-9,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,0,0,0,0)
+    ALN1 I 0 Bright A_CustomMissile("Waterball",32,9,0,0,0)
+    ALN1 H 3 Bright
+    Goto See  
+    Fire2:
+    ALN1 J 3 Bright A_FaceTarget
+    ALN1 I 3 Bright
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",45,0,0,0,10,0,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",45,45,0,0,5,5,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",0,45,0,0,0,10,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",0,45,0,0,10,0,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",45,0,0,0,0,10,0)
+    
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",-45,0,0,0,-10,0,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",-45,-45,0,0,-5,5,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",0,-45,0,0,0,10,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",0,-45,0,0,-10,0,0)
+    ALN1 I 0 Bright A_SpawnItemEx("Waterball2",-45,0,0,0,0,10,0)
+    ALN1 H 3 Bright
+    Goto See
+  Death:
+    AL1P A 4 Bright 
+    AL1P B 4 Bright A_Scream
+    AL1P C 4 Bright A_Fadeout(0.1)
+    AL1P DE 4 Bright
+    AL1P F 4 Bright 
+    AL1P G 4 Bright
+    AL1P H 4 Bright A_Fadeout(0.1)
+    AL1P IJK 4 Bright 
+    AL1P LM 3 Bright
+    AL1P N 3 Bright
+    AL1P OPQ 3 Bright
+    AL1P R 3 Bright A_Fadeout(0.1)
+    Stop
+  }
+}
+
+ ACTOR WaterBall
+ {
+   Radius 17
+   Height 18
+   Translation "168:175=160:167", "176:200=240:247"
+   Speed 15
+   scale 3
+   FastSpeed 20
+   Damage 5
+   Projectile    
+   +HEXENBOUNCE
+   +NOGRAVITY
+   Bouncecount 4
+   Bouncefactor 1
+   +RANDOMIZE
+   RenderStyle Add
+   Alpha 0.6
+   SeeSound "imp/attack"
+   DeathSound "imp/shotx"
+   States
+   {
+   Spawn:
+     BAL1 AB 4 Bright
+     Loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ACTOR Waterball2
+{
+  Radius 15
+  Height 18
+   Translation "168:175=160:167", "176:200=240:247"
+  Speed 2
+  Damage 0
+  +SKYEXPLODE
+  Projectile
+  +RANDOMIZE
+  RenderStyle Add
+  Alpha 0.75
+   SeeSound "imp/attack"
+   DeathSound "imp/shotx"
+  States
+  {
+  Spawn:
+  BAL1 AB 4 Bright
+  loop
+  Death:
+     BAL1 C 6 Bright 
+     BAL1 YOLO 0 A_SpawnItemEx("Waterball", 0, 0, -24, random(-10,10), random(-10,10), random(-10,10))
+     BAL1 E 6 Bright 
+    Stop
+    }
+    }
+
+ACTOR Buzzler 666
+{
+  Radius 150
+  Height 1
+  -SOLID
+  +NOGRAVITY
+  +CLIENTSIDEONLY
+  States
+  {
+  Spawn:
+    TNT1 A 3 A_SpawnItemEx("Firefly",random(-300,200),random(-300,300),random(0,300),random(-2,2),random(-2,2),random(0,2),0)
+   TNT1 A 0 A_SpawnItemEx("Firefly",random(-220,220),random(-220,220),random(0,220),random(-2,2),random(-2,2),random(0,2),0)
+   Loop
+  Death:
+    TNT1 A 0
+    Stop
+  }
+}
+
+ACTOR Firefly
+{
+  Radius 13
+  Height 8
+  Speed 25
+  +HEXENBOUNCE
+  -NOGRAVITY
+  +CLIENTSIDEONLY
+  damage 0
+  Gravity 0.2
+  scale 0.35
+  +RANDOMIZE
+  +RIPPER
+  +BLOODLESSIMPACT
+  RenderStyle Add 
+  States
+  {
+  Spawn:
+    APLS AB 5 Bright A_Fadeout(0.3)
+ Loop
+  }
+}
+
+actor KappaSpawner : CustomMonsterInvasionSpot 667
+{	
+DropItem Kappa
+}
+
+ACTOR Kappa      //KAPPAPA KAPPAPA NIIITORIIIII
+ {               // OH KAPPAPA KAPPAPA NIIIITORIIII    
+   Health 100    //sorry couldn't resist.
+   Radius 20
+   Height 56
+   BloodColor Yellow
+   Mass 100
+   Speed 8
+   PainChance 200
+ Obituary "%o was surprised by the kappa."
+   Monster
+   +FLOORCLIP
+   Translation "000:143=192:207", "147:167=240:247", "168:191=160:167"
+   SeeSound "imp/sight"
+   PainSound "imp/pain"
+   DeathSound "imp/death"
+   ActiveSound "imp/active"
+   States
+   {
+   Spawn:
+     TROO AB 10 A_Look
+     Loop
+   See:
+     TROO AABBCCDD 3 A_Chase
+     Loop
+   Melee:
+  Missile:
+     TROO EF 8 A_FaceTarget
+     TROO G 1
+     TROO G 0 A_CustomMissile ("KappaBall1", 36, 0, 0, 0, 0)  
+     TROO G 0 A_CustomMissile ("KappaBall2", 36, 3, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall2", 36, -3, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall3", 36, 6, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall3", 36, -6, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall4", 36, 9, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall4", 36, -9, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall5", 36, 12, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall5", 36, -12, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall6", 36, 15, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall6", 36, -15, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall7", 36, 12, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall7", 36, -12, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall8", 36, 9, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall8", 36, -9, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall9", 36, 6, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall9", 36, -6, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall10", 36, 3, 0, 0, 0)  
+        TROO G 0 A_CustomMissile ("KappaBall10", 36, -3, 0, 0, 0)
+     TROO G 0 A_CustomMissile ("KappaBall11", 36, 0, 0, 0, 0)  
+        TROO G 9
+     Goto See
+   Pain:  
+     TROO H 2
+     TROO H 2 A_Pain
+     Goto See
+   Death:
+     TROO I 8
+     TROO J 8 A_Scream
+     TROO K 6
+     TROO L 6 A_NoBlocking
+     TROO M -1
+     Stop
+   XDeath:
+     TROO N 5
+     TROO O 5 A_XScream
+     TROO P 5
+     TROO Q 5 A_NoBlocking
+     TROO RST 5
+     TROO U -1
+     Stop
+   Raise:
+     TROO MLKJI 8
+     Goto See
+   }
+ }
+ ACTOR KappaBall1
+ {
+   Game Doom
+   SpawnID 10
+   Radius 6
+   Height 8
+   Translation "168:175=160:167", "176:200=240:247"
+   Speed 10
+   FastSpeed 20
+   Damage 3
+   Projectile    
+   +RANDOMIZE
+   RenderStyle Add
+   Alpha 0.2
+   SeeSound "imp/attack"
+   DeathSound "imp/shotx"
+   States
+   {
+   Spawn:
+     BAL1 AB 4 Bright
+     Loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall2 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(0.5)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall3 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(0.75)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall4 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(1)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall5 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(1.25)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+ ACTOR KappaBall6 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(1.5)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall7 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(1.75)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+ ACTOR KappaBall8 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(2)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall9 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(2.25)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall10 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(2.50)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+
+ ACTOR KappaBall11 : KappaBall1
+ {  States
+   {
+   Spawn:
+     BAL1 ABAB 4 Bright 
+     Goto SpeedBoost
+    SpeedBoost:
+     BAL1 A 4 A_ScaleVelocity(2.75)
+     Goto Fetch
+    Fetch:
+     BAL1 BABA 4 Bright
+     loop
+   Death:
+     BAL1 CDE 6 Bright
+     Stop
+   }
+ }
+

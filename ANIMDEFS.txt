@@ -1,0 +1,29 @@
+flat fan1
+	pic fan1 tics 1
+	pic fan2 tics 1
+	pic fan3 tics 1
+	pic fan4 tics 1
+	
+texture fan1
+	pic fan1 tics 1
+	pic fan2 tics 1
+	pic fan3 tics 1
+	pic fan4 tics 1
+	
+warp flat wqlava
+warp flat wgslime
+
+//Hexen Lava Defs
+texture W_245 range W_248 tics 6
+
+texture temlava1
+	range temlava7
+	tics 6
+	
+warp2 texture TEMLAVA1
+warp2 texture TEMLAVA2
+warp2 texture TEMLAVA3
+warp2 texture TEMLAVA4
+warp2 texture TEMLAVA5
+warp2 texture TEMLAVA6
+warp2 texture TEMLAVA7

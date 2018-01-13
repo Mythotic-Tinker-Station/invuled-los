@@ -1,0 +1,80 @@
+ACTOR NightmareDemon 10100 //NIGHTMARE DEMON
+{
+	SpawnID 251
+	Health 260
+	Radius 30
+	Height 56
+	Speed 18
+	Mass 200
+	PainChance 200
+	RenderStyle TRANSLUCENT
+	Alpha 0.3
+	MONSTER
+	+FLOORCLIP
+	+LONGMELEERANGE
+	SeeSound "nightmareDemon/sight"
+	AttackSound "nightmareDemon/melee"
+	PainSound "nightmareDemon/pain"
+	DeathSound "nightmareDemon/death"
+	ActiveSound "nightmareDemon/active"
+        Obituary "%o was spooked by a Nightmare Demon."
+        States
+        {
+        Spawn:
+        	SAR2 AB 10 A_look
+        	Loop
+        See:
+        	SAR2 AABBCCDD 2 A_Chase
+        	Loop
+        Melee:
+        	SAR2 E 6 A_FaceTarget
+        	SAR2 F 6 A_FaceTarget
+        	SAR2 G 6 A_SargAttack
+        	Goto See
+        Missile:
+        	SAR2 O 6 A_FaceTarget
+        	SAR2 P 8 A_CustomMissile("NDemonBall", 24, 0, 0)
+        	Goto See
+        Pain:
+        	SAR2 H 3
+        	SAR2 H 3 A_Pain
+        	Goto See
+        Death:
+        	SAR2 I 5
+        	SAR2 J 5 A_Scream
+        	SAR2 K 5
+        	SAR2 L 5 A_Fall
+        	SAR2 M 5
+        	SAR2 N -1
+        	Stop
+        Raise:
+        	SAR2 MLKJI 5
+        	Goto See
+        }
+}
+
+ACTOR NDemonBall //NIGHTMARE DEMON - Fireball
+{
+    Radius 8
+    Height 6
+    Speed 12
+    Damage 4
+    PROJECTILE
+    SeeSound "64ball/shoot"
+    DeathSound "64ball/explode"
+    Decal BaronScorch
+    States
+    {
+    Spawn:
+        DBAL AB 4 Bright
+        Loop
+    Death:
+        DBAL CDEFGH 4 Bright
+        Stop
+    }
+}
+
+actor NightmareDemonInvasionSpot : CustomMonsterInvasionSpot 14691
+{
+dropitem "NightmareDemon"
+}

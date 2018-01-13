@@ -1,0 +1,181 @@
+Actor Fallen 30113
+{
+  Health 200
+  Radius 24
+  Height 48
+  Mass 200
+  Speed 12
+  PainChance 128
+  Monster
+  +NoGravity
+  +Float
+  Obituary "%o got burned by a Fallen."
+  SeeSound "monster/falsit"
+  PainSound "monster/falpai"
+  DeathSound "monster/faldth"
+  ActiveSound "monster/falact"
+  States
+  {
+  Spawn:
+    FALN ABCDB 8 Bright A_Look
+    Loop
+  See:
+    FALN A 0 Bright A_Jump(96,12)
+    FALN A 1 Bright A_Playsound("monster/falwng")
+    FALN AABBCCDDBB 2 Bright A_Chase
+    Loop
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 0 Bright A_Jump(64, 1)
+    Loop
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN B 2 Bright A_FastChase
+    FALN B 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    Loop
+  Missile:
+    FALN C 0 Bright A_Jump(128, 13)
+    FALN CE 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 2 Bright A_FaceTarget 
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN E 5 Bright
+    Goto See
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 5 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 2 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 3 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN C 0 Bright A_FastChase
+    FALN C 2 Bright A_FaceTarget
+    FALN E 0 Bright A_FastChase 
+    FALN E 3 Bright A_FaceTarget
+    FALN F 0 Bright A_FastChase
+    FALN F 2 Bright A_CustomMissile("FallenShot",40,0,0)
+    FALN F 0 Bright A_SpawnItemEx("FallenFX", 0, 0, 40, 0, 0, 0, 0, 128)
+    FALN E 5 Bright
+    Goto See 
+  Pain: 
+    FALN E 3 Bright
+    FALN E 3 Bright A_Pain 
+    FALN E 3 Bright
+    Goto See 
+  Death: 
+    FALN G 5 Bright
+    FALN H 5 Bright A_Scream 
+    FALN IJK 5 Bright
+    FALN L 5 Bright A_NoBlocking 
+    FALN M -1 A_SetFloorClip 
+    Stop 
+  Raise: 
+    FALN M 5 A_UnSetFloorClip 
+    FALN LKJIHG 5 Bright
+    Goto See 
+  }
+}
+
+Actor FallenFX
+{  
+  Radius 2
+  Height 2
+  Speed 0
+  Scale 1.0
+  Projectile
+  RenderStyle Add
+  Alpha 0.67
+  States
+  {
+  Spawn:
+    TNT1 A 3 Bright
+    FBFX ABCDE 3 Bright
+    Stop 
+  }
+}
+
+Actor FallenShot
+{
+  Radius 8
+  Height 8
+  Speed 16
+  Damage 2
+  RenderStyle Add
+  DamageType Fire
+  Alpha 0.67
+  Projectile
+  +ThruGhost
+  Seesound "weapons/firmfi"
+  DeathSound "weapons/firex5"
+  States
+  {
+  Spawn:
+    BALF AB 2 Bright A_SpawnItemEx("FallenFX", 0, 0, 0, 0, 0, 0, 0, 128)
+    Loop
+  Death:
+    BALF CDEF 4 Bright
+    Stop
+  }
+}
+
+Actor FallenSP
+{  
+  Radius 2
+  Height 2
+  Speed 0
+  ReactionTime 60
+  Projectile
+  RenderStyle Normal
+  -NoGravity
+  States
+  {
+  Spawn:
+    FBSP AB 3 Bright A_Countdown
+    Loop
+  Death:
+    FBSP CDE 3 Bright
+    Stop 
+  }
+}
+
+actor FallenSpawner : CustomMonsterInvasionSpot 26005
+{	
+DropItem Fallen
+}
