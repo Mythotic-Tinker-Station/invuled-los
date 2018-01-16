@@ -9277,3 +9277,50 @@ BrightMap Sprite AGAHG0
 Map brightmaps/BMAGAHG0.png
 DisableFullBright
 }
+
+//------------------------
+// Light Tower: Point Lights
+//------------------------
+pointlight LightTower_Small
+{
+    color 1.0 1.0 1.0
+    size 144
+}
+
+
+
+pointlight LightTower_Medium
+{
+    color 1.0 1.0 1.0
+    size 320
+}
+
+
+
+pointlight LightTower_Large
+{
+    color 1.0 1.0 1.0
+    size 640
+}
+
+
+
+// ================
+object LightTower_PointLight_Small
+{
+    frame TNT1A0 {light LightTower_Small}
+}
+
+
+
+object LightTower_PointLight_Medium
+{
+    frame TNT1A0 {light LightTower_Medium}
+}
+
+
+
+object LightTower_PointLight_Large
+{
+    frame TNT1A0 {light LightTower_Large}
+}

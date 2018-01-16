@@ -1,0 +1,95 @@
+// This is a centralized point for the point lights; usable with ACS
+Actor LightTowerBase 191
+{
+    // GZDoom Builder Configuration
+    // ==============================
+    //$Title "Light Tower Base"
+    //$Category "Light Tower"
+    //$Sprite PointLight
+    //$Color 15
+    //$NotAngled
+    // ------------------------------
+    // ==============================
+    
+    +NoGravity
+    +NoInteraction
+    -Solid
+    +NoBlockMap
+    +NoSector
+    +NoClip
+    Radius 0
+    Height 0
+
+    States
+    {
+    Spawn:
+        TNT1 A -1
+        Stop
+    }
+}
+
+
+
+Actor LightTower_PointLight_Base
+{
+    +NoGravity
+    +NoInteraction
+    -Solid
+    +NoBlockMap
+    +NoSector
+    -NoClip
+    Radius 0
+    Height 0
+    
+    States
+    {
+    Spawn:
+        TNT1 A -1
+        Stop
+    }
+}
+
+
+
+Actor LightTower_PointLight_Small : LightTower_PointLight_Base 192
+{
+    // GZDoom Builder Configuration
+    // ==============================
+    //$Title "Tower Light: Small"
+    //$Category "Light Tower"
+    //$Sprite PointLight
+    //$Color 15
+    //$NotAngled
+    // ------------------------------
+    // ==============================
+}
+
+
+
+Actor LightTower_PointLight_Medium : LightTower_PointLight_Base 193
+{
+    // GZDoom Builder Configuration
+    // ==============================
+    //$Title "Tower Light: Medium"
+    //$Category "Light Tower"
+    //$Sprite PointLight
+    //$Color 15
+    //$NotAngled
+    // ------------------------------
+    // ==============================
+}
+
+
+
+Actor LightTower_PointLight_Large : LightTower_PointLight_Base 194
+{
+    // GZDoom Builder Configuration
+    // ==============================
+    //$Title "Tower Light: Large"
+    //$Category "Light Tower"
+    //$Sprite PointLight
+    //$Color 15
+    //$NotAngled
+    // ------------------------------
+    // ==============================
+}

@@ -1,5 +1,5 @@
-#include "zcommon.acs"
 #library "TEHACS"
+#include "zcommon.acs"
 
 function void printmapname(str s1, str s2, int f_fTime)
 {

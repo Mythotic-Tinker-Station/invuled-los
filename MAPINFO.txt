@@ -2,7 +2,7 @@ clearepisodes
 
 episode "INVUX01"
 {
-	name = "The Evil Within"
+	name = "Legion of Sin"
 }
 
 defaultmap
@@ -105,9 +105,27 @@ map INVUX16 "Where the water flows"
 	Music = "D_INV16"
 	EnterPic = ""
 	ExitPic = ""
+	Next = INVUX17
+	SecretNext = INVUX17
+}
+
+map INVUX17 "Shadowmaker"
+{
+    LevelNum = 17
+    ExitPic = "SM_InPic"
+    InterMusic = "SM_Inter"
+    SmoothLighting
+    NoFallingDamage
+    AllowJump
+    AllowCrouch
+    AllowFreelook
+    RandomPlayerStarts
 	Next = INVUX18
 	SecretNext = INVUX18
-}
+    // Because these textures are going to be called via ACS,
+    //  tell ZDoom that we're going to need them on-demand.
+        PrecacheTextures = "NJSMSH01", "NJSMSH02", "NJSMSH03", "NJSMSH04"
+} // Shadowmaker
 
 map INVUX18 "Between The 4 Gates"
 {
