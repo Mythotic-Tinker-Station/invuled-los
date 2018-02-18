@@ -45,6 +45,9 @@
 // #include "actors/EVILCORE.txt"
 #include "actors/invux29.txt"
 
+//Monsters - Invasion Script
+#include actors/InvMons/InvMons.txt
+
 //Weapons
 #include "actors/AUTOSG.txt"
 

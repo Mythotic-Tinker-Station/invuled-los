@@ -1,0 +1,341 @@
+#library "INVMODE"
+#include "zcommon.acs"
+#include "IMONLIST.acs"
+
+/*
+List of must haves for this invasion script:
+-An array that contains the information about the waves.
+-An interpretation of that array to spawn the enemies.
+
+Array structure and data:
+The data in the array determines what the script will be capable of.
+
+int invasionWavesINT[][] = {
+    //This array contains the integet types of the array.
+    //WaveNumber: Determines at which wave the monster group should spawn.
+    //MapspotLow: The TID of the mapspot with the lowest TID for spawning.
+    //MapspotHigh: The TID of the mapspot with the highest TID for spawning.
+    //ActorCount: The number of actors to spawn in this group.
+    //ActorsPerPlayerIncrease: The number of additional actors to spawn per player. Can be negative.
+    //MinPlayers: The minimum number of players required for this group to be spawned.
+    //MaxPlayers: The maximum number of players allowed for this group to be spawned.
+    //HealthIncreasePerPlayer: A floating point number representing a percentage to add per player.
+    //              Intended for bosses and the like, don't make the gameplay wierd for the player!
+    //
+    //FLAGS: The flags that can be applied to the system. Will add description along the way.
+    //{WaveNumber, MapspotLow, MapspotHigh, MonsterCount, MonstersPerPlayerIncrease, MinPlayers, MaxPlayers,HealthIncreasePerPlayer},
+};
+
+str invasionWavesSTR[] = {
+    //This array contains the string types of the waves.
+    //ActorName: The name of the actor to spawn. Can be monsters, ammo or whatever.
+    //{ActorName},
+};
+
+*/
+
+int WaveNumber = 0; //Gets incremented immediately by the invasion handler.
+int WaveItemSpawning = -1; //Spawning system will resume after running out when this value gets set to be equal to WaveNumber.
+
+#Define INV_NUMWAVES 3
+
+#Define INV_NUMITEMPOOLS 2 //Including the dummy pool.
+#Define INV_NUMITEMPOOLVALS (INV_NUMWAVES+1)
+#Define INV_ITEMPOOLDELAY 0
+#Define INV_ITEMPOOLWAVESTART 0 //Starts one higher than this, but the lowest wave number is 1. Just avoids some unnecessary subtractions in array accesses.
+//First value is the respawn delay for items in the pool.
+int INV_ItemPools[INV_NUMITEMPOOLS][INV_NUMITEMPOOLVALS] = {
+	{}, //Dummy
+	{35, 3, 0, 0}, //Weh.
+};
+
+//Used by item spawners' spawn state to wait for the initial activation of item spawning.
+script 41 (int tid) {
+	while(WaveNumber != WaveItemSpawning) {
+		delay(1);
+	}
+	ACS_ExecuteAlways(42, 0, tid);
+}
+
+script 42 (int tid) {
+	//print(s:"test: ", d:tid);
+	//GiveActorInventory(num, "SpawnPointItem_TOKEN", 1);
+	int ItemPool = getUserVariable(tid, "user_ItemPool");
+	
+	//log(d:tid, s:": Pool:", d:ItemPool, s:", #Items:", d:INV_ItemPools[ItemPool][WaveNumber], s:"; WaveNumber:", d:WaveNumber);
+	
+	//Check first to we can early-out if there isn't anything to get.
+	/*if(INV_ItemPools[ItemPool][WaveNumber] > 0) {
+		delay(INV_ItemPools[ItemPool][INV_ITEMPOOLDELAY]);
+		//A second check just in case the last item was taken while this was delayed.
+		if(INV_ItemPools[ItemPool][WaveNumber] > 0) {
+			SetActorState(num, "Point.Spawn", TRUE);
+			INV_ItemPools[ItemPool][WaveNumber]--;
+		}
+	}*/
+	delay(INV_ItemPools[ItemPool][INV_ITEMPOOLDELAY]);
+	while(INV_ItemPools[ItemPool][WaveNumber] <= 0 || WaveNumber != WaveItemSpawning) {
+		delay(1);
+	}
+	//If the spawn delay is altered, then there is no issue anyway. Items should always spawn on wave start or countdown start.
+	SetActorState(tid, "Point.Spawn", TRUE);
+	INV_ItemPools[ItemPool][WaveNumber]--;
+}
+
+/*script 444 open {
+	while(true) {
+		SetActorState(222, "Point.Spawn", TRUE);
+		delay (5);
+	}
+}*/
+
+////////////////////////////////////////////////////////////////////////////////
+/* //////////////////////////////////////
+ * // MONSTER PART OF WAVE INFORMATION //
+*/ //////////////////////////////////////
+
+#Define INV_WaveNumber 0
+#Define INV_MapspotLow 1
+#Define INV_MapspotHigh 2
+#define INV_MonsterType 3
+#Define INV_ActorCount 4
+#Define INV_ActorsPerPlayerIncrease 5
+#Define INV_MinPlayers 6
+#Define INV_MaxPlayers 7
+#Define INV_HealthIncreasePerPlayer 8
+#Define INV_FLAGS 9
+#Define INV_NUMWAVEPROPS 10
+
+//#Define INV_NUMGROUPS 4
+/*int invasionWavesINT[INV_NUMGROUPS][INV_NUMWAVEPROPS] = {
+    {1, 1, 3, 1, 0, 1, 1, 0, 0},
+    //{1, 1, 3, 5, 1, 1, 1, 0, 0},
+    {2, 1, 3, 3, -1, 1, 1, 0, 0},
+    {3, 1, 3, 3, 0, 1, 1, 0, 0},
+    {0}, //This is the wave 0 thing. It stops the main loop from running.
+};*/
+
+world int 1:invasionWavesINT[];
+
+#Define INV_ActorName 0
+
+//#Define INV_NUMACTORS 3
+/*str invasionWavesSTR[3] = {
+	  "PainElemental",
+    //"Zombieman",
+    "Shotgunguy",
+    "DoomImp",
+};*/
+
+/*#define MON_ZOMBIEMAN 0
+#define MON_SHOTGUNGUY 1
+#define MON_DOOMIMP 2
+#define MON_PAINELEMENTAL 3
+#define INV_NUMMONSTERTYPES 4*/
+str INV_MonsterTypes[INV_NUMMONSTERTYPES] = {
+	"zombieman",
+	"Shotgunguy",
+	"DoomImp",
+	"PainElemental",
+};
+
+
+int WAVEREG_CURWAVE = 1;
+int WAVEREG_NUMGROUPS = 0;
+
+function void registerMonsters(int spotLow, int spotHigh, int monType, int count, int countPPlayer, int pLow, int pHigh, int hpPPlayer, int flags) {
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_WaveNumber] = WAVEREG_CURWAVE;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_MapspotLow] = spotLow;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_MapspotHigh] = spotHigh;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_MonsterType] = monType;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_ActorCount] = count;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_ActorsPerPlayerIncrease] = countPPlayer;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_MinPlayers] = pLow;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_MaxPlayers] = pHigh;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_HealthIncreasePerPlayer] = hpPPlayer;
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_FLAGS] = flags;
+	
+	WAVEREG_NUMGROUPS++;
+}
+
+/*function void registerItems() {
+	
+}*/
+
+function void nextWave(void) {
+	WAVEREG_CURWAVE++; //Start adding the monsters for the next wave.
+}
+
+function void finalize(void) {
+	invasionWavesINT[WAVEREG_NUMGROUPS*INV_NUMWAVEPROPS+INV_WaveNumber] = 0; //End token.
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+int Spawndelay = 35*5;
+int IsSpawning = 0; //Every time a script spawning monsters run, this gets incremented.
+                    //When they are done they decrement it again, keeping track of if
+                    //Spawning goes on or not, and how many spawning scripts are running.
+int MonstersRemaining = 0;
+
+script 120 (int spawnCheck) {
+	if(spawnCheck == false || (spawnCheck == true && GetUserVariable(0, "user_hasSpawned") == 1) ) {
+		MonstersRemaining--;
+		log(s:"Monster died,     remaining: ", d:MonstersRemaining);
+	}
+}
+#define END_OF_WAVE_DELAY 35
+script 121 (int num) {
+	MonstersRemaining++;
+	log(s:"Monsters spawned, remaining: ", d:MonstersRemaining);
+}
+
+script 9999 OPEN { //Core script. (void) {//
+    Delay(1); //So other OPEN scripts can run first, including the one that initializes the waves.
+    int GroupID = 0;
+    //int WaveNumber = 1;
+    bool WaitForWave = false;
+		int waitTicks = END_OF_WAVE_DELAY;
+    //log(d:GroupID);
+    //log(d:WaveNumber);
+    //log(d:WaitForWave);
+    
+    While (true) { //Loop that continuously manages the system.
+        //log(s:"Running Main Loop");
+        //log(d:ThingCount(T_NONE,999));
+		
+		log(s:"Running main loop, monsters remaining: ", d:MonstersRemaining);
+        //if(!(ThingCount(T_NONE,999) > 0) && !IsSpawning){
+		//if(MonstersRemaining == 0 && !IsSpawning) {
+		if(waitTicks == 0) {
+      //There are no monsters left on the map.
+      
+			waitTicks = END_OF_WAVE_DELAY;
+			WaveNumber++;
+			//Wave number 0 means end of the invasion.
+      // if(invasionWavesINT[GroupID][INV_WaveNumber] == 0) {
+			if(invasionWavesINT[GroupID*INV_NUMWAVEPROPS+INV_WaveNumber] == 0) {
+				ACS_Execute(9997, 0); //Win script.
+				terminate;
+      }
+      ACS_Executealways(4, 0, WaveNumber);
+      Delay(SpawnDelay);
+      
+      WaitForWave = false;
+      //log(s:"Wave got Validated");
+      while(!WaitforWave) {
+        //This runs until all spawn groups have been initialized.
+        //log(s:"Not Waiting For Wave");
+        // if(invasionWavesINT[GroupID][INV_WaveNumber] == waveNumber) {
+				if(invasionWavesINT[GroupID*INV_NUMWAVEPROPS+INV_WaveNumber] == waveNumber) {
+          //this wave has the right wave number
+          //log(s:"Spawning Command initialized");
+          ACS_ExecuteAlways(9998, 0, GroupID);
+          Delay(1);
+          GroupID++;
+        }
+        else {//the wave belongs to the next wave, and hence the script should wait with spawning.
+          WaitForWave = true;
+        }
+      }
+			Delay(10); //Only check 3.5 times a second. It's enough to feel smooth.
+		}
+		//There is currently a monster count of 0 with no spawning. Wait an amount of time to see if something spawns from a dying monster or similar.
+		else if(MonstersRemaining == 0 && !IsSpawning) {
+			waitTicks--;
+			Delay(1); //Wait a tick.
+		} else { //Something spawned while waiting.
+			waitTicks = END_OF_WAVE_DELAY;
+			delay(10); //Only check 3.5 times a second. It's enough to feel smooth.
+		}
+    
+    //Delay(10);
+  }
+    
+}
+
+script 9998 (int GroupID) {
+    //This thing just does what it is told, it keeps trying to get things to spawn until it runs out.
+    IsSpawning++; //Make sure the system knows that spawning is going on.
+    //log(s:"Spawning Command recieved");
+    // int numActors = invasionWavesINT[GroupID][INV_ActorCount] + (PlayerCount() * invasionWavesINT[GroupID][INV_ActorsPerPlayerIncrease]); //Number of actors to spawn.
+    int numActors = invasionWavesINT[GroupID*INV_NUMWAVEPROPS+INV_ActorCount] + (PlayerCount() * invasionWavesINT[GroupID*INV_NUMWAVEPROPS+INV_ActorsPerPlayerIncrease]); //Number of actors to spawn.
+		
+    //log(d:numActors);
+    While(numActors) {
+        //log(s:"Spawning initialized");
+        //This continues to run as long as there is something to spawn.
+        // for(int i = invasionWavesINT[GroupID][INV_MapspotLow]; i <= invasionWavesINT[GroupID][INV_MapspotHigh]; i++) {
+				for(int i = invasionWavesINT[GroupID*INV_NUMWAVEPROPS+INV_MapspotLow]; i <= invasionWavesINT[GroupID*INV_NUMWAVEPROPS+INV_MapspotHigh]; i++) {
+          //This loop goes through all the spawn spots and for each enemy spawned it removes one from
+          //it's queue, and it stops when it runs out of actors to place.
+          //log(s:"Try to spawn actor at spot", d:i);
+          if(!numActors) {break;}
+          // if(Spawnspotfacing(invasionWavesSTR[groupID], i, 0)) {
+					if(Spawnspotfacing(INV_MonsterTypes[invasionWavesINT[GroupID*INV_NUMWAVEPROPS+INV_MonsterType]], i, 0)) {
+					numActors--;
+					MonstersRemaining++;
+					//Delay(5);
+			  }
+      }
+      Delay(35);
+    }
+    //log(s:"Spawning Halted");
+    IsSpawning--; //This instance is no longer spawning enemies.
+    
+    /*
+    TODO:
+    Make the rest of the options do something.
+    */
+}
+
+script 4 (int Wave) {
+    switch(Wave) {
+        case 1:
+            //GiveActorInventory(1, "chaingun", 1);
+            print(s:"WAVE 1");
+			WaveItemSpawning = 1;
+            break;
+        case 2:
+            print(s:"WAVE 2");
+			WaveItemSpawning = 2;
+            break;
+		case 3:
+            print(s:"WAVE 3");
+			WaveItemSpawning = 3;
+            break;
+		default:
+            log(s:"Wave change handler got an invalid wavenumber: ", d:Wave);
+            break;
+    }
+}
+
+script 1 enter
+{
+    Thing_ChangeTID(0, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

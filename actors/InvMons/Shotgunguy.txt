@@ -1,0 +1,28 @@
+ACTOR InvShotgunGuy : ShotgunGuy replaces ShotgunGuy
+{
+  States
+  {
+  Death:
+    SPOS H 5 ACS_ExecuteAlways(120, 0)
+    SPOS I 5 A_Scream
+    SPOS J 5 A_NoBlocking
+    SPOS K 5
+    SPOS L -1
+    Stop
+  XDeath:
+    SPOS M 5 ACS_ExecuteAlways(120, 0)
+    SPOS N 5 A_XScream
+    SPOS O 5 A_NoBlocking
+    SPOS PQRST 5
+    SPOS U -1
+    Stop
+  /*Death:
+	SPOS H 0 ACS_ExecuteAlways(120, 0)
+	goto Super::Death
+    Stop
+  XDeath:
+	SPOS M 0 ACS_ExecuteAlways(120, 0)
+	goto Super::XDeath
+    Stop*/
+  }
+}

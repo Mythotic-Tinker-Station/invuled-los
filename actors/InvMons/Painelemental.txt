@@ -1,0 +1,20 @@
+ACTOR InvPainElemental : PainElemental replaces PainElemental
+{
+  States
+  {
+  Missile:
+    PAIN D 5 A_FaceTarget
+    PAIN E 5 A_FaceTarget
+    PAIN F 5 Bright A_FaceTarget
+    //PAIN F 0 Bright ACS_ExecuteAlways(121, 0, 1)
+	PAIN F 0 Bright A_PainAttack("InvLostSoul_CountSpawn")
+    Goto See
+  Death:
+    PAIN H 8 Bright ACS_ExecuteAlways(120, 0)
+    PAIN I 8 Bright A_Scream
+    PAIN JK 8 Bright
+    PAIN L 8 Bright A_PainDie("InvLostSoul_CountSpawn")
+    PAIN M 8 Bright
+    Stop
+  }
+}

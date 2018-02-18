@@ -1,0 +1,29 @@
+ACTOR InvDoomImp : DoomImp replaces DoomImp
+{
+  States
+  {
+  Death:
+    TROO I 8 ACS_ExecuteAlways(120, 0)
+    TROO J 8 A_Scream
+    TROO K 6
+    TROO L 6 A_NoBlocking
+    TROO M -1
+    Stop
+  XDeath:
+    TROO N 5 ACS_ExecuteAlways(120, 0)
+    TROO O 5 A_XScream
+    TROO P 5
+    TROO Q 5 A_NoBlocking
+    TROO RST 5
+    TROO U -1
+    Stop
+  /*Death:
+	TROO I 0 ACS_ExecuteAlways(120, 0)
+	goto Super::Death
+    Stop
+  XDeath:
+	TROO N 0 ACS_ExecuteAlways(120, 0)
+	goto Super::XDeath
+    Stop*/
+  }
+}

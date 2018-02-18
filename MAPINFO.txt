@@ -171,6 +171,17 @@ map INVUX29 "Acta est fabula"
 	SecretNext = INVUX29
 }
 
+map TESTMAP "TESTMAP"
+{
+	LevelNum = 1
+	Sky1 = "MOON"
+	Music = "D_INV01"
+	EnterPic = "" //meant to be used for interpics of each map.
+	ExitPic = "" //up to you whether to use it or not
+	Next = INVUX01
+	SecretNext = INVUX01
+}
+
 gameinfo
 {
 	titlepage = "TITLEPIC"

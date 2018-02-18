@@ -1,0 +1,28 @@
+ACTOR InvZombieMan : ZombieMan replaces ZombieMan
+{
+  States
+  {
+  Death:
+    POSS H 5 ACS_ExecuteAlways(120, 0)
+    POSS I 5 A_Scream
+    POSS J 5 A_NoBlocking
+    POSS K 5
+    POSS L -1
+    Stop
+  XDeath:
+	POSS M 5 ACS_ExecuteAlways(120, 0)
+    POSS N 5 A_XScream
+    POSS O 5 A_NoBlocking
+    POSS PQRST 5
+    POSS U -1
+    Stop
+  /*Death:
+	POSS H 0 ACS_ExecuteAlways(120, 0)
+	goto ZombieMan::Death
+    Stop
+  XDeath:
+	POSS M 0 ACS_ExecuteAlways(120, 0)
+	goto ZombieMan::XDeath
+    Stop*/
+  }
+}

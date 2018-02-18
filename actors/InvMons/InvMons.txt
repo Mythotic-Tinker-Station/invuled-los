@@ -1,0 +1,80 @@
+#include "actors/InvMons/Zombieman.txt"
+#include "actors/InvMons/Shotgunguy.txt"
+#include "actors/InvMons/DoomImp.txt"
+#include "actors/InvMons/LostSoul.txt"
+#include "actors/InvMons/Painelemental.txt"
+
+
+//This shit is just here temporarily.
+ACTOR SpawnPoint : MapSpot {
+  //Base type. Add general shit here.
+  
+  states {
+    Spawn:
+	  TNT1 A 1
+      loop
+	Point.Spawn:
+	  goto Spawn
+  }
+}
+
+ACTOR SpawnPointItem : SpawnPoint {
+  var int user_ItemPickedUp;
+  var int user_ItemPool;
+  states {
+    Spawn:
+	  TNT1 A 0 NoDelay
+	  TNT1 A 0 A_SetUserVar("user_ItemPickedUp", 0)
+	  TNT1 A 0 A_SetSpecial(226, 42, 0, tid)
+	  TNT1 A 0 ACS_ExecuteAlways(41, 0, tid) //Same as 42, but it is a pre-wait for the mapper to activate item spawns.
+	DoNothing:
+	  TNT1 A 1
+	  //TNT1 A 0 A_JumpIfInventory("SpawnPointItem_TOKEN", 1, "HandleToken")
+	  TNT1 A 0 A_JumpIf(user_ItemPickedUp == 1, "HandlePickup")
+	  loop
+	Point.Spawn:
+	  TNT1 A 0 A_SetUserVar("user_ItemPickedUp", 0)
+	  goto DoNothing
+	HandlePickup:
+	  TNT1 A 0
+	  TNT1 A 0 A_Log("Handling Pickup")
+	  TNT1 A 0 A_SetUserVar("user_ItemPickedUp", 1)
+	  TNT1 A 0 A_TakeInventory("SpawnPointItem_TOKEN", 1, 0, 0)
+	  //TNT1 A 0 ACS_Execute(42, 0, 0, 0, 0)
+	  goto DoNothing
+  }
+}
+ACTOR SpawnPointItem_TOKEN : Inventory {inventory.MaxAmount 1}
+
+ACTOR SpawnPoint_Clip : SpawnPointItem 32000 {
+  //The special and its arguments are passed to the spawned items.
+  //Special 226 //ACS_ExecuteAlways
+  //Args 42, 0
+  states {
+    /*Spawn: //Exists here as well for the fall-through.
+	  TNT1 A 0 NoDelay
+	  TNT1 A 0 A_SetUserVar("user_ItemPickedUp", 0)
+	  TNT1 A 0 A_SetSpecial(226, 42, 0, tid)*/
+    Point.Spawn:
+      TNT1 A 0 A_SpawnItemEx("SpawnedClip", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERSPECIAL, 0, 0)
+	  TNT1 A 0 A_Jump(256, "Super::Point.Spawn")
+      goto Super::Point.Spawn
+  }
+}
+
+ACTOR SpawnedClip : Clip {
+  Activation THINGSPEC_ThingActs //It is important that this is the activator.
+  //Special 226 //ACS_ExecuteAlways
+  //Args 42, 0
+  /*states {
+    Spawn:
+	  CLIP A -1
+	  stop
+    Pickup:
+	  TNT1 A 0 NoDelay
+	  TNT1 A 0 ACS_ExecuteAlways(42, 0, 0, 0, 0)
+	  stop
+  }*/
+}
+
+
