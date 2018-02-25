@@ -53,6 +53,12 @@
 }
 
 {
+	mapname = INVUX17
+	gamemode = invasion
+	wavelimit = 7
+}
+
+{
 	mapname = INVUX18
 	gamemode = invasion
 	wavelimit = 8

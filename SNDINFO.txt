@@ -608,6 +608,28 @@ Evilcore/Shotzap	DSABBZAP
 catharsi/shotsit 	DSSLSHOT
 catharsi/shotdth 	DSSLSHDT
 
+////////////////////////
+// Terminator sounds  //
+////////////////////////
+
+monster/termsit tsight
+monster/termpin tpain1
+monster/termdth tdeath
+monster/brufir dsbrufir
+weapons/hellex dshellex
+
+$random Terminator/termact { termact1 termact2 }
+termact1		dsteract
+termact2		dsteact2
+$random Terminator/terstepA { terstep1 terstep2 }
+terstep1		 dststep1
+terstep2		 dststep2
+Terminator/terstepB dststep3
+Terminator/tershotA dstshot1
+Terminator/tershotB dstshot2
+
+
+
 ////////////////////////////////////////
 ///////////             ////////////////
 ///////////   Weapons   ////////////////
@@ -679,3 +701,131 @@ gibbage/git2				git2
 gibbage/git3				git3
 
 $limit gibbage/xgibst 0
+
+//======================
+//    Special Effects
+//======================
+
+
+// RainSpawner
+Ambient/Rain        AMBRAIN
+$volume Ambient/Rain 0.4
+
+
+// --
+
+
+// Breakable Glass
+GLASS   DSGLASS     // Glass destroyed <Flying monsters creep into room with large dead Cyberdemon>
+$limit  GLASS       4
+
+
+// --
+
+
+GLASS1  DSGLASS1    // Glass Destroyed <Mid-Tier portal room>
+$limit  GLASS1      4
+
+
+// --
+
+
+GLASS2  DSGLASS2    // Glass Destroyed <Small room with Plasma Rifle and Tiger signature>
+$limit  GLASS2      4
+
+
+// --
+
+
+GLASS3  DSGLASS3    // Glass Destroyed <Small room with next to high-tier portal>
+$limit  GLASS3      4
+
+
+// --
+
+
+// Rain
+$ambient 1 Ambient/Rain point 1.0 continuous 0.5
+
+
+// --
+
+
+World/ElectricBuzzing   ElecBuz
+$AMBIENT 2 World/ElectricBuzzing POINT CONTINUOUS 1.0
+
+
+// --
+
+
+World/ElectricBuzzing1  ElecBuz1
+$AMBIENT 3 World/ElectricBuzzing1 POINT CONTINUOUS 1.0
+
+
+// --
+
+
+World/OceanWaves        OceanWav
+$AMBIENT 4 World/OceanWaves POINT CONTINUOUS 1.0
+
+
+// --
+
+
+// Wind Whistling
+World/WindWhistle   wndwist
+$AMBIENT 5 World/WindWhistle POINT RANDOM 25.0 60.0 0.8
+
+
+// --
+World/GentleBreeze      wndgntl
+$AMBIENT 6 World/GentleBreeze POINT CONTINUOUS 1.0
+
+
+// --
+
+
+World/WindyBreeze       wndbrez
+$AMBIENT 7 World/WindyBreeze POINT CONTINUOUS 0.9
+
+// --
+
+
+World/WindyBreeze1      wndbrez1
+$AMBIENT 8 World/WindyBreeze1 POINT CONTINUOUS 0.9
+
+
+// --
+
+
+// Reversed Whispering
+World/Whispers   whisper
+$AMBIENT 11 World/Whispers POINT RANDOM 25.0 60.0 0.6
+
+
+// --
+
+
+// TGRDM3's Teleport Humming
+World/TeleportGate   TeleHum
+$AMBIENT 9 World/TeleportGate POINT CONTINUOUS 0.5
+
+World/TeleportGate2   TeleHum2 // Demonic
+$AMBIENT 10 World/TeleportGate2 POINT CONTINUOUS 0.5
+
+//======================
+//        Music
+//======================
+// For more Shane Strife's music, go here: http://forum.zdoom.org/viewtopic.php?p=472461#p472461
+
+
+
+// The map scripts will use these aliases, if needing to trade or change the music track to another
+//  file, it can be done in this file without needing to manually change the map's ACS script.
+$musicalias SM_MUS1 S_E2M7
+$musicalias SM_MUS2 S_E2M6
+$musicalias SM_MUS3 S_SHAWN
+$musicalias SM_MUS4 S_E3M8
+
+// Intermission
+$musicalias SM_Inter S_DM2INT

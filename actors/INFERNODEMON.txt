@@ -1,6 +1,6 @@
 ACTOR InfernoDemon
 {
-  Health 50000
+  Health 90000
   Speed 16
   Radius 185
   Height 345

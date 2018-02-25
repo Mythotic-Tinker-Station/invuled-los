@@ -50,3 +50,7 @@
 
 //Effects
 #include "actors/PROPNEFFECTS.txt"
+#include "actors/BreakableGlass.txt"
+#include "actors/Fog.txt"
+#include "actors/Rain.txt"
+#include "actors/LightTower.txt"

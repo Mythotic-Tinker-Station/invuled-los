@@ -27,3 +27,48 @@ warp2 texture TEMLAVA4
 warp2 texture TEMLAVA5
 warp2 texture TEMLAVA6
 warp2 texture TEMLAVA7
+
+////////////////////////////
+// Animations Definitions //
+////////////////////////////
+
+
+// ==============================
+//       Texture Animations
+// ==============================
+
+
+// Texture Base: retres
+// -----------------
+TEXTURE TX1_0DP
+    PIC TX1_0DP TICS 6
+    PIC TX1_0DQ TICS 6
+    PIC TX1_0DR TICS 6
+    PIC TX1_0DO TICS 6
+
+
+
+// ==============================
+//              Warp
+// ==============================
+
+
+
+// Texture Base: 2mbrown
+// -----------------
+    WARP FLAT TX2_004
+
+
+// Texture Base: nmncorp1
+// -----------------
+    WARP2 FLAT TX3_00C
+
+
+// Texture Base: smdm
+// -----------------
+    WARP2 FLAT TX3_011
+
+
+// Shadowmaker Specifics
+// -----------------
+    WARP FLAT TX5_000

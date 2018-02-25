@@ -9277,3 +9277,1074 @@ BrightMap Sprite AGAHG0
 Map brightmaps/BMAGAHG0.png
 DisableFullBright
 }
+
+//------------------------
+// Light Tower: Point Lights
+//------------------------
+pointlight LightTower_Small
+{
+    color 1.0 1.0 1.0
+    size 144
+}
+
+
+
+pointlight LightTower_Medium
+{
+    color 1.0 1.0 1.0
+    size 320
+}
+
+
+
+pointlight LightTower_Large
+{
+    color 1.0 1.0 1.0
+    size 640
+}
+
+
+
+// ================
+object LightTower_PointLight_Small
+{
+    frame TNT1A0 {light LightTower_Small}
+}
+
+
+
+object LightTower_PointLight_Medium
+{
+    frame TNT1A0 {light LightTower_Medium}
+}
+
+
+
+object LightTower_PointLight_Large
+{
+    frame TNT1A0 {light LightTower_Large}
+}
+
+Pointlight TerminatorBlaster
+{
+Color 1.0 0.8 0.0
+Size 40
+}
+
+Pointlight TerminatorBlaster2
+{
+Color 1.0 0.8 0.0
+Size 44
+}
+
+Pointlight TerminatorBlaster3
+{
+Color 1.0 0.8 0.0
+Size 48
+}
+
+Pointlight TerminatorBlaster4
+{
+Color 1.0 0.8 0.0
+Size 44
+}
+
+Pointlight TerminatorBlaster5
+{
+Color 0.9 0.7 0.0
+Size 40
+}
+
+Pointlight TerminatorBlaster6
+{
+Color 0.9 0.7 0.0
+Size 38
+}
+
+Pointlight TerminatorBlaster7
+{
+Color 0.8 0.6 0.0
+Size 36
+}
+
+Pointlight TerminatorBlaster8
+{
+Color 0.7 0.5 0.0
+Size 34
+}
+
+Pointlight TerminatorBlaster9
+{
+Color 0.6 0.4 0.0
+Size 32
+}
+
+Pointlight TerminatorBlaster10
+{
+Color 0.5 0.3 0.0
+Size 30
+}
+
+Pointlight TerminatorBlaster11
+{
+Color 0.4 0.2 0.0
+Size 28
+}
+
+Pointlight TerminatorBlaster12
+{
+Color 0.3 0.1 0.0
+Size 26
+}
+
+Object TerminatorBlaster
+{
+Frame BLSTA { Light TerminatorBlaster }
+Frame BLSTB { Light TerminatorBlaster2 }
+Frame BLSTC { Light TerminatorBlaster3 }
+Frame BLSTD { Light TerminatorBlaster4 }
+Frame BLSTE { Light TerminatorBlaster5 }
+Frame BLSTF { Light TerminatorBlaster6 }
+Frame BLSTG { Light TerminatorBlaster7 }
+Frame BLSTH { Light TerminatorBlaster8 }
+Frame BLSTI { Light TerminatorBlaster9 }
+Frame BLSTJ { Light TerminatorBlaster10 }
+Frame BLSTK { Light TerminatorBlaster11 }
+Frame BLSTL { Light TerminatorBlaster12 }
+}
+
+Pointlight RedStar
+{
+Color 1.0 0.0 0.0
+Size 32
+}
+
+Pointlight RedStar2
+{
+Color 1.0 0.0 0.0
+Size 36
+}
+
+Pointlight RedStar3
+{
+Color 1.0 0.0 0.0
+Size 40
+}
+
+Pointlight RedStar4
+{
+Color 0.9 0.0 0.0
+Size 36
+}
+
+Pointlight RedStar5
+{
+Color 0.9 0.0 0.0
+Size 32
+}
+
+Pointlight RedStar6
+{
+Color 0.8 0.0 0.0
+Size 30
+}
+
+Pointlight RedStar7
+{
+Color 0.8 0.0 0.0
+Size 28
+}
+
+Pointlight RedStar8
+{
+Color 0.7 0.0 0.0
+Size 26
+}
+
+Pointlight RedStar9
+{
+Color 0.6 0.0 0.0
+Size 24
+}
+
+Pointlight RedStar10
+{
+Color 0.5 0.0 0.0
+Size 22
+}
+
+Pointlight RedStar11
+{
+Color 0.4 0.0 0.0
+Size 20
+}
+
+Pointlight RedStar12
+{
+Color 0.3 0.0 0.0
+Size 18
+}
+
+Object RedStar
+{
+Frame STARA { Light RedStar }
+Frame STARB { Light RedStar2 }
+Frame STARC { Light RedStar3 }
+Frame STARD { Light RedStar4 }
+Frame STARE { Light RedStar5 }
+Frame STARF { Light RedStar6 }
+Frame STARG { Light RedStar7 }
+Frame STARH { Light RedStar8 }
+Frame STARI { Light RedStar9 }
+Frame STARJ { Light RedStar10 }
+Frame STARK { Light RedStar11 }
+Frame STARL { Light RedStar12 }
+}
+
+Pointlight Redgrenade
+{
+Color 1.0 0.0 0.0
+Size 24
+}
+
+Object Redgrenade
+{
+Frame TGNDA { Light Redgrenade }
+Frame TGNDB { Light Redgrenade }
+Frame TGNDC { Light Redgrenade }
+}
+
+Pointlight Grenadeblast1
+{
+Color 1.0 0.0 0.0
+Size 36
+}
+
+Pointlight Grenadeblast2
+{
+Color 1.0 0.0 0.0
+Size 40
+}
+
+Pointlight Grenadeblast3
+{
+Color 1.0 0.0 0.0
+Size 44
+}
+
+Pointlight Grenadeblast4
+{
+Color 0.9 0.0 0.0
+Size 40
+}
+
+Pointlight Grenadeblast5
+{
+Color 0.9 0.0 0.0
+Size 36
+}
+
+Pointlight Grenadeblast6
+{
+Color 0.8 0.0 0.0
+Size 34
+}
+
+Pointlight Grenadeblast7
+{
+Color 0.8 0.0 0.0
+Size 32
+}
+
+Pointlight Grenadeblast8
+{
+Color 0.7 0.0 0.0
+Size 30
+}
+
+Pointlight Grenadeblast9
+{
+Color 0.6 0.0 0.0
+Size 28
+}
+
+Pointlight Grenadeblast10
+{
+Color 0.5 0.0 0.0
+Size 26
+}
+
+Pointlight Grenadeblast11
+{
+Color 0.4 0.0 0.0
+Size 24
+}
+
+Object Grenadeblast
+{
+Frame TGBLA { Light Grenadeblast1 }
+Frame TGBLB { Light Grenadeblast2 }
+Frame TGBLC { Light Grenadeblast3 }
+Frame TGBLD { Light Grenadeblast4 }
+Frame TGBLE { Light Grenadeblast5 }
+Frame TGBLF { Light Grenadeblast6 }
+Frame TGBLG { Light Grenadeblast7 }
+Frame TGBLH { Light Grenadeblast8 }
+Frame TGBLI { Light Grenadeblast9 }
+Frame TGBLJ { Light Grenadeblast10 }
+Frame TGBLK { Light Grenadeblast11 }
+}
+
+Pointlight Terminatorpuff1
+{
+Color 1.0 0.8 0.0
+Size 16
+}
+
+Pointlight Terminatorpuff2
+{
+Color 0.9 0.7 0.0
+Size 20
+}
+
+Pointlight Terminatorpuff3
+{
+Color 0.8 0.6 0.0
+Size 24
+}
+
+Pointlight Terminatorpuff4
+{
+Color 0.7 0.5 0.0
+Size 20
+}
+
+Pointlight Terminatorpuff5
+{
+Color 0.6 0.4 0.0
+Size 16
+}
+
+Pointlight Terminatorpuff6
+{
+Color 0.5 0.3 0.0
+Size 14
+}
+
+Pointlight Terminatorpuff7
+{
+Color 0.4 0.2 0.0
+Size 12
+}
+
+Pointlight Terminatorpuff8
+{
+Color 1.0 0.8 0.0
+Size 10
+}
+
+Pointlight Terminatorpuff9
+{
+Color 0.9 0.7 0.0
+Size 16
+}
+
+Pointlight Terminatorpuff10
+{
+Color 0.8 0.6 0.0
+Size 20
+}
+
+Pointlight Terminatorpuff11
+{
+Color 0.7 0.5 0.0
+Size 24
+}
+
+Pointlight Terminatorpuff12
+{
+Color 0.6 0.4 0.0
+Size 20
+}
+
+Pointlight Terminatorpuff13
+{
+Color 0.5 0.3 0.0
+Size 16
+}
+
+Pointlight Terminatorpuff14
+{
+Color 0.4 0.2 0.0
+Size 14
+}
+
+Pointlight Terminatorpuff15
+{
+Color 0.4 0.2 0.0
+Size 12
+}
+
+Object Terminatorpuff
+{
+Frame TPUFA { Light Terminatorpuff1 }
+Frame TPUFB { Light Terminatorpuff2 }
+Frame TPUFC { Light Terminatorpuff3 }
+Frame TPUFD { Light Terminatorpuff4 }
+Frame TPUFE { Light Terminatorpuff5 }
+Frame TPUFF { Light Terminatorpuff6 }
+Frame TPUFG { Light Terminatorpuff7 }
+Frame TPUFH { Light Terminatorpuff8 }
+Frame TPUFI { Light Terminatorpuff9 }
+Frame TPUFJ { Light Terminatorpuff10 }
+Frame TPUFK { Light Terminatorpuff11 }
+Frame TPUFL { Light Terminatorpuff12 }
+Frame TPUFM { Light Terminatorpuff13 }
+Frame TPUFN { Light Terminatorpuff14 }
+Frame TPUFO { Light Terminatorpuff15 }
+}
+
+Pointlight TerminatorDeath1
+{
+Color 0.6 0.1 0.0
+Size 40
+}
+
+Pointlight TerminatorDeath2
+{
+Color 0.7 0.2 0.0
+Size 44
+}
+
+Pointlight TerminatorDeath3
+{
+Color 0.8 0.3 0.0
+Size 48
+}
+
+Pointlight TerminatorDeath4
+{
+Color 0.9 0.4 0.0
+Size 52
+}
+
+Pointlight TerminatorDeath5
+{
+Color 1.0 0.5 0.0
+Size 56
+}
+
+Pointlight TerminatorDeath6
+{
+Color 1.0 0.5 0.0
+Size 52
+}
+
+Pointlight TerminatorDeath7
+{
+Color 0.9 0.5 0.0
+Size 48
+}
+
+Pointlight TerminatorDeath8
+{
+Color 0.8 0.4 0.0
+Size 44
+}
+
+Pointlight TerminatorDeath9
+{
+Color 0.7 0.3 0.0
+Size 40
+}
+
+Pointlight TerminatorDeath10
+{
+Color 0.6 0.2 0.0
+Size 36
+}
+
+Pointlight TerminatorDeath11
+{
+Color 0.6 0.2 0.0
+Size 32
+}
+
+Pointlight TerminatorDeath12
+{
+Color 0.5 0.1 0.0
+Size 28
+}
+
+Pointlight TerminatorDeath13
+{
+Color 0.4 0.1 0.0
+Size 26
+}
+
+FlickerLight2 TerminatorAttack1
+{
+Color 1.0 0.8 0.2
+Size 56
+SecondarySize 64
+Interval 1
+Offset 0 80 0
+}
+
+Pointlight TerminatorAttack2
+{
+Color 1.0 0.5 0.2
+Size 56
+}
+
+Pointlight TerminatorAttack3
+{
+Color 1.0 0.0 0.0
+Size 56
+}
+
+Object Terminator
+{
+Frame TERMF { Light TerminatorAttack2 }
+Frame TERMH { Light TerminatorAttack1 }
+Frame TERMI { Light TerminatorAttack1 }
+Frame TERMK { Light TerminatorAttack3 }
+Frame TERMM { Light TerminatorDeath1 }
+Frame TERMN { Light TerminatorDeath2 }
+Frame TERMO { Light TerminatorDeath3 }
+Frame TERMP { Light TerminatorDeath4 }
+Frame TERMQ { Light TerminatorDeath5 }
+Frame TERMR { Light TerminatorDeath6 }
+Frame TERMS { Light TerminatorDeath7 }
+Frame TERMT { Light TerminatorDeath8 }
+Frame TERMU { Light TerminatorDeath9 }
+Frame TERMV { Light TerminatorDeath10 }
+Frame TERMW { Light TerminatorDeath11 }
+Frame TERMX { Light TerminatorDeath12 }
+Frame TERMY { Light TerminatorDeath13 }
+}
+
+//Brightmaps
+
+
+BrightMap Sprite TERMA1
+{
+Map BMTERMA1
+DisableFullBright
+}
+
+BrightMap Sprite TERMA2
+{
+Map BMTERMA2
+DisableFullBright
+}
+
+BrightMap Sprite TERMA3
+{
+Map BMTERMA3
+DisableFullBright
+}
+
+BrightMap Sprite TERMA6
+{
+Map BMTERMA6
+DisableFullBright
+}
+
+BrightMap Sprite TERMA7
+{
+Map BMTERMA7
+DisableFullBright
+}
+
+BrightMap Sprite TERMA8
+{
+Map BMTERMA8
+DisableFullBright
+}
+
+BrightMap Sprite TERMB1
+{
+Map BMTERMB1
+DisableFullBright
+}
+
+BrightMap Sprite TERMB2
+{
+Map BMTERMB2
+DisableFullBright
+}
+
+BrightMap Sprite TERMB3
+{
+Map BMTERMB3
+DisableFullBright
+}
+
+BrightMap Sprite TERMB7
+{
+Map BMTERMB7
+DisableFullBright
+}
+
+BrightMap Sprite TERMB8
+{
+Map BMTERMB8
+DisableFullBright
+}
+
+BrightMap Sprite TERMC1
+{
+Map BMTERMC1
+DisableFullBright
+}
+
+BrightMap Sprite TERMC2
+{
+Map BMTERMC2
+DisableFullBright
+}
+
+BrightMap Sprite TERMC3
+{
+Map BMTERMC3
+DisableFullBright
+}
+
+BrightMap Sprite TERMC4
+{
+Map BMTERMC4
+DisableFullBright
+}
+
+BrightMap Sprite TERMC7
+{
+Map BMTERMC7
+DisableFullBright
+}
+
+BrightMap Sprite TERMC8
+{
+Map BMTERMC8
+DisableFullBright
+}
+
+BrightMap Sprite TERMD1
+{
+Map BMTERMD1
+DisableFullBright
+}
+
+BrightMap Sprite TERMD2
+{
+Map BMTERMD2
+DisableFullBright
+}
+
+BrightMap Sprite TERMD3
+{
+Map BMTERMD3
+DisableFullBright
+}
+
+BrightMap Sprite TERMD7
+{
+Map BMTERMD7
+DisableFullBright
+}
+
+BrightMap Sprite TERMD8
+{
+Map BMTERMD8
+DisableFullBright
+}
+
+BrightMap Sprite TERME1
+{
+Map BMTERME1
+DisableFullBright
+}
+
+BrightMap Sprite TERME2
+{
+Map BMTERME2
+DisableFullBright
+}
+
+BrightMap Sprite TERME3
+{
+Map BMTERME3
+DisableFullBright
+}
+
+BrightMap Sprite TERME7
+{
+Map BMTERME7
+DisableFullBright
+}
+
+BrightMap Sprite TERME8
+{
+Map BMTERME8
+DisableFullBright
+}
+
+BrightMap Sprite TERMF1
+{
+Map BMTERMF1
+DisableFullBright
+}
+
+BrightMap Sprite TERMF2
+{
+Map BMTERMF2
+DisableFullBright
+}
+
+BrightMap Sprite TERMF3
+{
+Map BMTERMF3
+DisableFullBright
+}
+
+BrightMap Sprite TERMF4
+{
+Map BMTERMF4
+DisableFullBright
+}
+
+BrightMap Sprite TERMF5
+{
+Map BMTERMF5
+DisableFullBright
+}
+
+BrightMap Sprite TERMF6
+{
+Map BMTERMF6
+DisableFullBright
+}
+
+BrightMap Sprite TERMF7
+{
+Map BMTERMF7
+DisableFullBright
+}
+
+BrightMap Sprite TERMF8
+{
+Map BMTERMF8
+DisableFullBright
+}
+
+BrightMap Sprite TERMG1
+{
+Map BMTERMG1
+DisableFullBright
+}
+
+BrightMap Sprite TERMG2
+{
+Map BMTERMG2
+DisableFullBright
+}
+
+BrightMap Sprite TERMG3
+{
+Map BMTERMG3
+DisableFullBright
+}
+
+BrightMap Sprite TERMG7
+{
+Map BMTERMG7
+DisableFullBright
+}
+
+BrightMap Sprite TERMG8
+{
+Map BMTERMG8
+DisableFullBright
+}
+
+BrightMap Sprite TERMH1
+{
+Map BMTERMH1
+DisableFullBright
+}
+
+BrightMap Sprite TERMH2
+{
+Map BMTERMH2
+DisableFullBright
+}
+
+BrightMap Sprite TERMH3
+{
+Map BMTERMH3
+DisableFullBright
+}
+
+BrightMap Sprite TERMH4
+{
+Map BMTERMH4
+DisableFullBright
+}
+
+BrightMap Sprite TERMH5
+{
+Map BMTERMH5
+DisableFullBright
+}
+
+BrightMap Sprite TERMH6
+{
+Map BMTERMH6
+DisableFullBright
+}
+
+BrightMap Sprite TERMH7
+{
+Map BMTERMH7
+DisableFullBright
+}
+
+BrightMap Sprite TERMH8
+{
+Map BMTERMH8
+DisableFullBright
+}
+
+BrightMap Sprite TERMI1
+{
+Map BMTERMI1
+DisableFullBright
+}
+
+BrightMap Sprite TERMI2
+{
+Map BMTERMI2
+DisableFullBright
+}
+
+BrightMap Sprite TERMI3
+{
+Map BMTERMI3
+DisableFullBright
+}
+
+BrightMap Sprite TERMI4
+{
+Map BMTERMI4
+DisableFullBright
+}
+
+BrightMap Sprite TERMI5
+{
+Map BMTERMI5
+DisableFullBright
+}
+
+BrightMap Sprite TERMI6
+{
+Map BMTERMI6
+DisableFullBright
+}
+
+BrightMap Sprite TERMI7
+{
+Map BMTERMI7
+DisableFullBright
+}
+
+BrightMap Sprite TERMI8
+{
+Map BMTERMI8
+DisableFullBright
+}
+
+BrightMap Sprite TERMJ1
+{
+Map BMTERMJ1
+DisableFullBright
+}
+
+BrightMap Sprite TERMJ2
+{
+Map BMTERMJ2
+DisableFullBright
+}
+
+BrightMap Sprite TERMJ3
+{
+Map BMTERMJ3
+DisableFullBright
+}
+
+BrightMap Sprite TERMJ7
+{
+Map BMTERMJ7
+DisableFullBright
+}
+
+BrightMap Sprite TERMJ8
+{
+Map BMTERMJ8
+DisableFullBright
+}
+
+BrightMap Sprite TERMK1
+{
+Map BMTERMK1
+DisableFullBright
+}
+
+BrightMap Sprite TERMK2
+{
+Map BMTERMK2
+DisableFullBright
+}
+
+BrightMap Sprite TERMK3
+{
+Map BMTERMK3
+DisableFullBright
+}
+
+BrightMap Sprite TERMK4
+{
+Map BMTERMK4
+DisableFullBright
+}
+
+BrightMap Sprite TERMK5
+{
+Map BMTERMK5
+DisableFullBright
+}
+
+BrightMap Sprite TERMK6
+{
+Map BMTERMH6
+DisableFullBright
+}
+
+BrightMap Sprite TERMK7
+{
+Map BMTERMK7
+DisableFullBright
+}
+
+BrightMap Sprite TERMK8
+{
+Map BMTERMK8
+DisableFullBright
+}
+
+BrightMap Sprite TERML1
+{
+Map BMTERML1
+DisableFullBright
+}
+
+BrightMap Sprite TERML2
+{
+Map BMTERML2
+DisableFullBright
+}
+
+BrightMap Sprite TERML3
+{
+Map BMTERML3
+DisableFullBright
+}
+
+BrightMap Sprite TERML4
+{
+Map BMTERML4
+DisableFullBright
+}
+
+BrightMap Sprite TERML8
+{
+Map BMTERML8
+DisableFullBright
+}
+
+BrightMap Sprite TERMM0
+{
+Map BMTERMM0
+DisableFullBright
+}
+
+BrightMap Sprite TERMN0
+{
+Map BMTERMN0
+DisableFullBright
+}
+
+BrightMap Sprite TERMO0
+{
+Map BMTERMO0
+DisableFullBright
+}
+
+BrightMap Sprite TERMP0
+{
+Map BMTERMP0
+DisableFullBright
+}
+
+BrightMap Sprite TERMQ0
+{
+Map BMTERMQ0
+DisableFullBright
+}
+
+BrightMap Sprite TERMR0
+{
+Map BMTERMR0
+DisableFullBright
+}
+
+BrightMap Sprite TERMS0
+{
+Map BMTERMS0
+DisableFullBright
+}
+
+BrightMap Sprite TERMT0
+{
+Map BMTERMT0
+DisableFullBright
+}
+
+BrightMap Sprite TERMU0
+{
+Map BMTERMU0
+DisableFullBright
+}
+
+BrightMap Sprite TERMV0
+{
+Map BMTERMV0
+DisableFullBright
+}
+
+BrightMap Sprite TERMW0
+{
+Map BMTERMW0
+DisableFullBright
+}
+
+BrightMap Sprite TERMX0
+{
+Map BMTERMX0
+DisableFullBright
+}
+
+BrightMap Sprite TERMY0
+{
+Map BMTERMY0
+DisableFullBright
+}
