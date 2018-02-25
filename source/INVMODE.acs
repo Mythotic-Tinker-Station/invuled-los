@@ -37,17 +37,33 @@ str invasionWavesSTR[] = {
 int WaveNumber = 0; //Gets incremented immediately by the invasion handler.
 int WaveItemSpawning = -1; //Spawning system will resume after running out when this value gets set to be equal to WaveNumber.
 
-#Define INV_NUMWAVES 3
+//#Define INV_NUMWAVES 3
 
+/*
 #Define INV_NUMITEMPOOLS 2 //Including the dummy pool.
-#Define INV_NUMITEMPOOLVALS (INV_NUMWAVES+1)
+#Define INV_NUMITEMPOOLVALS (INV_NUMWAVES+1) //Why did I do this again? Somethimes I do weird things. :\
 #Define INV_ITEMPOOLDELAY 0
 #Define INV_ITEMPOOLWAVESTART 0 //Starts one higher than this, but the lowest wave number is 1. Just avoids some unnecessary subtractions in array accesses.
+*/
 //First value is the respawn delay for items in the pool.
-int INV_ItemPools[INV_NUMITEMPOOLS][INV_NUMITEMPOOLVALS] = {
+/*int INV_ItemPools[INV_NUMITEMPOOLS][INV_NUMITEMPOOLVALS] = {
 	{}, //Dummy
 	{35, 3, 0, 0}, //Weh.
-};
+};*/
+
+#define INV_IP_SpawnDelay 0
+#define INV_IP_PoolAmount 1
+#define INV_IP_PoolCapacity 3
+#define INV_IP_NUMIPPROPS 4
+world int 2:ItemPools[];
+int numIPs = 0;
+
+function void registerItems(int SpawnDelay, int Amount, int Capacity) {
+	ItemPools[numIPs*INV_IP_NUMIPPROPS+INV_IP_SpawnDelay] = SpawnDelay;
+	ItemPools[numIPs*INV_IP_NUMIPPROPS+INV_IP_PoolAmount] = Amount;
+	ItemPools[numIPs*INV_IP_NUMIPPROPS+INV_IP_PoolCapacity] = Capacity;
+	numIPs++;
+}
 
 //Used by item spawners' spawn state to wait for the initial activation of item spawning.
 script 41 (int tid) {
@@ -73,13 +89,22 @@ script 42 (int tid) {
 			INV_ItemPools[ItemPool][WaveNumber]--;
 		}
 	}*/
-	delay(INV_ItemPools[ItemPool][INV_ITEMPOOLDELAY]);
+	
+	/*delay(INV_ItemPools[ItemPool][INV_ITEMPOOLDELAY]);
 	while(INV_ItemPools[ItemPool][WaveNumber] <= 0 || WaveNumber != WaveItemSpawning) {
 		delay(1);
 	}
 	//If the spawn delay is altered, then there is no issue anyway. Items should always spawn on wave start or countdown start.
 	SetActorState(tid, "Point.Spawn", TRUE);
-	INV_ItemPools[ItemPool][WaveNumber]--;
+	INV_ItemPools[ItemPool][WaveNumber]--;*/
+	
+	delay(ItemPools[ItemPool*INV_IP_NUMIPPROPS+INV_IP_SpawnDelay]);
+	while(ItemPools[ItemPool*INV_IP_NUMIPPROPS+INV_IP_PoolAmount] <= 0 || WaveNumber != WaveItemSpawning) {
+		delay(1);
+	}
+	//If the spawn delay is altered, then there is no issue anyway. Items should always spawn on wave start or countdown start.
+	SetActorState(tid, "Point.Spawn", TRUE);
+	ItemPools[ItemPool*INV_IP_NUMIPPROPS+INV_IP_PoolAmount]--;
 }
 
 /*script 444 open {
@@ -158,10 +183,6 @@ function void registerMonsters(int spotLow, int spotHigh, int monType, int count
 	WAVEREG_NUMGROUPS++;
 }
 
-/*function void registerItems() {
-	
-}*/
-
 function void nextWave(void) {
 	WAVEREG_CURWAVE++; //Start adding the monsters for the next wave.
 }
@@ -175,7 +196,7 @@ function void finalize(void) {
 
 
 
-
+int canSpawn = false;
 int Spawndelay = 35*5;
 int IsSpawning = 0; //Every time a script spawning monsters run, this gets incremented.
                     //When they are done they decrement it again, keeping track of if
@@ -222,7 +243,11 @@ script 9999 OPEN { //Core script. (void) {//
 				ACS_Execute(9997, 0); //Win script.
 				terminate;
       }
-      ACS_Executealways(4, 0, WaveNumber);
+			canSpawn = false;
+      ACS_Executealways(9001, 0, WaveNumber);
+			while(canSpawn == false) {
+				Delay(1); //Wait until the mapper decides to start the show.
+			}
       Delay(SpawnDelay);
       
       WaitForWave = false;
@@ -293,7 +318,12 @@ script 9998 (int GroupID) {
     */
 }
 
-script 4 (int Wave) {
+function void startNextWave(void) {
+	WaveItemSpawning++;
+	canSpawn = true;
+}
+
+/*script 9001 (int Wave) {
     switch(Wave) {
         case 1:
             //GiveActorInventory(1, "chaingun", 1);
@@ -312,9 +342,9 @@ script 4 (int Wave) {
             log(s:"Wave change handler got an invalid wavenumber: ", d:Wave);
             break;
     }
-}
+}*/
 
-script 1 enter
+script 9900 enter
 {
     Thing_ChangeTID(0, 1);
 }
