@@ -1,0 +1,129 @@
+actor ArcherKnight 32212
+{
+    Health 175
+    Radius 20
+    Height 56
+    Speed 13
+    PainChance 200
+	Mass 200
+    MONSTER 
+    +FLOORCLIP
+    SeeSound "archer/sight"
+    AttackSound "archer/attack"
+    PainSound "archer/pain"
+    DeathSound "archer/death"
+    ActiveSound "archer/growl"
+    Obituary "%o was pierced by a KNARht Archer."
+    States
+    {
+    Spawn:
+        KNAR AB 10 A_Look
+        Loop
+    See:
+        KNAR AABBCCDD 3 A_Chase
+        Loop
+    Missile:
+		KNAR E 0 A_Jump(64,"Missile2")
+        KNAR E 3 A_PlaySound("archer/draw")
+        KNAR E 10 A_FaceTarget
+        KNAR F 5 bright A_CustomMissile("ArcherArrow",32,5)
+		KNAR E 5
+        Goto See
+	Missile2:	
+        KNAR E 3 A_PlaySound("archer/draw")
+        KNAR E 10 A_FaceTarget
+        KNAR G 5 bright A_CustomMissile("ArcherArrow2",32,5)
+		KNAR E 5
+        Goto See
+    Pain:
+    	KNAR H 3
+        KNAR H 3 A_Pain
+    	Goto See
+    Death:
+        KNAR I 5 A_Scream
+        KNAR J 5 A_NoBlocking
+        KNAR KLMN 5
+        KNAR N -1
+        Stop
+    XDeath:
+        KNAR O 5 A_PlaySound("archer/gib")
+        KNAR P 5 A_NoBlocking
+        KNAR QRSTUVWX 5
+        KNAR X -1
+        Stop
+    Raise:
+        KNIT MLKJIH 3
+        Goto See
+    }
+}
+
+
+actor ArcherArrow
+{
+   Radius 5
+   Height 12
+   Speed 16
+   Damage 3
+   PROJECTILE
+   +NOGRAVITY
+   renderstyle add
+   alpha 0.8
+   scale 0.5
+   SeeSound "archer/attack"
+   DeathSound "archer/hit"
+   States
+   {
+   Spawn:
+      VEKF A 1 bright A_SpawnItem("ArcherArrowTrail")
+      Loop
+   Death:
+      VEKF FGHI 3 bright
+	Stop
+   }
+}
+
+actor ArcherArrowTrail
+{
+	+NOCLIP
+	+NOBLOCKMAP
+	+NOGRAVITY
+	renderstyle add
+	alpha 0.5
+	States
+	{
+		Spawn:
+		VEKF AABCDE 3 A_FadeOut(0.1)
+		loop
+	}
+}
+
+actor ArcherArrow2 : ArcherArrow
+{
+   Speed 20
+   Damage 6
+   SeeSound "archer/attackboss"
+   States
+   {
+   Spawn:
+      VEKG A 1 bright A_SpawnItem("ArcherArrowTrail2")
+      Loop
+   Death:
+      VEKG FGHI 3 bright
+	Stop
+   }
+}
+
+actor ArcherArrowTrail2 : ArcherArrowTrail
+{
+	States
+	{
+		Spawn:
+		VEKG AABCDE 3 A_FadeOut(0.1)
+		loop
+	}
+}
+
+actor KnightArcherSpawner : CustomMonsterInvasionSpot 26008
+{	
+DropItem ArcherKnight
+}

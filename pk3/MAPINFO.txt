@@ -1,0 +1,195 @@
+clearepisodes
+
+episode "INVUX01"
+{
+	name = "Legion of Sin"
+}
+
+defaultmap
+{
+	SmoothLighting
+}
+
+map INVUX01 "Enter: The Future.. Again"
+{
+	LevelNum = 1
+	Sky1 = "MOON"
+	Music = "D_INV01"
+	EnterPic = "" //meant to be used for interpics of each map.
+	ExitPic = "" //up to you whether to use it or not
+	Next = INVUX02
+	SecretNext = INVUX02
+}
+
+map INVUX02 "Hell Storm"
+{
+	LevelNum = 2
+	//Sky1 = ""
+	Music = "D_INV02"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX03
+	SecretNext = INVUX03
+}
+
+map INVUX03 "Convulsion of the nature"
+{
+	LevelNum = 3
+	//Sky1 = ""
+	Music = "D_INV03"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX06
+	SecretNext = INVUX06
+}
+
+map INVUX06 "Mountain reserach facility"
+{
+	LevelNum = 6
+	//Sky1 = ""
+	Music = "D_INV06"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX07
+	SecretNext = INVUX07
+}
+
+map INVUX07 "Lavamatrixes"
+{
+	LevelNum = 7
+	//Sky1 = ""
+	Music = "D_LAVA"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX09
+	SecretNext = INVUX09
+}
+
+map INVUX09 "Infernal"
+{
+	LevelNum = 9
+	//Sky1 = ""
+	Music = "D_INV09"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX11
+	SecretNext = INVUX11
+}
+
+map INVUX11 "The Base is ours !"
+{
+	LevelNum = 11
+	Sky1 = "STSKY13"
+	Music = "D_INV11"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX15
+	SecretNext = INVUX15
+}
+
+map INVUX15 "Toxic Entrepot"
+{
+	LevelNum = 15
+	Sky1 = "STSKY8"
+	Music = "D_INV15"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX16
+	SecretNext = INVUX16
+}
+
+map INVUX16 "Where the water flows"
+{
+	LevelNum = 16
+	Sky1 = "MOON"
+	Music = "D_INV16"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX17
+	SecretNext = INVUX17
+}
+
+map INVUX17 "Shadowmaker"
+{
+    LevelNum = 17
+    ExitPic = "SM_InPic"
+    InterMusic = "SM_Inter"
+    SmoothLighting
+    NoFallingDamage
+    AllowJump
+    AllowCrouch
+    AllowFreelook
+    RandomPlayerStarts
+	Next = INVUX18
+	SecretNext = INVUX18
+    // Because these textures are going to be called via ACS,
+    //  tell ZDoom that we're going to need them on-demand.
+        PrecacheTextures = "NJSMSH01", "NJSMSH02", "NJSMSH03", "NJSMSH04"
+} // Shadowmaker
+
+map INVUX18 "Between The 4 Gates"
+{
+	LevelNum = 18
+	Sky1 = "STSKY6"
+	Music = "D_INV18"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX20
+	SecretNext = INVUX20
+}
+
+map INVUX20 "Lux et veritas"
+{
+	LevelNum = 20
+	//Sky1 = ""
+	Music = "D_LUX"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX24
+	SecretNext = INVUX24
+}
+
+map INVUX24 "Majestic Hell"
+{
+	LevelNum = 24
+	Sky1 = CFTEX51, 0.1
+	Music = "BGM24A"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX29
+	SecretNext = INVUX29
+}
+
+map INVUX29 "Acta est fabula"
+{
+	LevelNum = 29
+	//Sky1 = ""
+	Music = "D_INV29"
+	EnterPic = ""
+	ExitPic = ""
+	Next = INVUX01
+	SecretNext = INVUX29
+}
+
+gameinfo
+{
+	titlepage = "TITLEPIC"
+    creditpage = "CREDIT"
+    chatsound = "misc/chat"
+    infopage = "HELP", "CREDIT"
+    quitsound = "menu/quit2"
+    borderflat = "COMPBLUE"
+    armoricons = "ARM1A0", 0.5, "ARM2A0"
+    intermissionmusic = "NMINTLUD"
+    weaponslot = 1, "Fist", "Chainsaw"
+    weaponslot = 2, "Pistol"
+    weaponslot = 3, "Shotgun", "SuperShotgun AutoShotgun"
+    weaponslot = 4, "Chaingun", "Minigun"
+    weaponslot = 5, "RocketLauncher", "GrenadeLauncher"
+    weaponslot = 6, "PlasmaRifle", "RailGun"
+    weaponslot = 7, "BFG9000", "BFG10K"
+    dimcolor = "00 00 FF"
+    dimamount = 0.5
+    pickupcolor = "00 00 FF"
+    //quitmessages = ""
+}

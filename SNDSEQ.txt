@@ -1,5 +1,0 @@
-:Door1
-        door            1
-        playuntildone   ddoor
-        nostopcutoff
-end
