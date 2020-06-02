@@ -1,0 +1,15 @@
+*.pk3
+*.backup[123]
+*.dbs
+*.err
+*.bak
+*.lnk
+*.ico
+desktop.ini
+Test-Lexicon.bat
+TextureStore
+FlatsStore
+StagingArea
+doom.wad
+doom2.wad
+run.bat

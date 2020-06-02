@@ -1,0 +1,88 @@
+// this file is fragile, do not use tabs, do not space out the picname=titlename=color setup, only the title name can have spaces, do not space out lines
+// possible colors are "r" "g" "b", names should be a max of 8 chars
+STATIC1=STATIC=w
+STATIC2=STATIC=w
+STATIC3=STATIC=w
+STATIC4=STATIC=w
+STATIC5=STATIC=w
+STATIC6=STATIC=w
+STATIC7=STATIC=w
+STATIC8=STATIC=w
+SCRND1E1=Knee-Deep in the Dead=g
+SCRND1E2=The Shores of Hell=g
+SCRND1E3=Inferno=g
+SCRND1E4=Thy Flesh Consumed=g
+SCRNSIGL=Sigil=g
+SCRNNRFL=No Rest For The Living=g
+SCRNMAST=The Master Levels=g
+SCRNTNT=TNT: Evilution=g
+SCRNPLUT=The Plutonia Experiment=g
+SCRND2=Hell on Earth=g
+SCRNHR=Hell Revealed=g
+SCRNHR2=Hell Revealed 2=g
+SCRNKSUT=Kamasutra=g
+SCRNSL=Shai'tans Luck=g
+SCRNSOD=Speed of Doom=g
+SCRNVAN=Vanguard=g
+SCRNSC2=Scythe 2=g
+SCRNWOS=Whispers of Satan=g
+SCRNUAC=UAC Ultra=g
+SCRNMOM=Monuments Of Mars=g
+SCRNSHIT=Khorus's Speedy Shit=g
+SCRNCOC=Circle of Caina=g
+SCRNFSW=Forest Swords=g
+SCRNDCT=Doom Core Trilogy=g
+SCRNMOC=Maps of Chaos=g
+SCRNWID=Doom2 the way Id Did=g
+SCRNEST=Estranged=g
+SCRNGD=Going Down=g
+SCRNDKE=Dark Encounters=g
+SCRNAV=Alien Vendetta=g
+SCRNHADE=Hadephobia=g
+SCRNMAY=Mayhem 17=g
+SCRNSUN=Sunlust=g
+SCRNHLLB=Hellbound=g
+SCRN1994=1994 Tune Up Project=g
+SCRNUR=Unholy Realms=g
+SCRNCS=Combat Shock=r
+SCRNCS2=Combat Shock 2=r
+SCRNGOTH=New Gothic Movement 1=r
+SCRNDRKT=Dark Tartarus=r
+SCRNSNDR=Sunder=r
+SCRNDIB=Drown In Blood=r=wip
+SCRNSWFT=Swift Death=r
+SCRNDV=Deus Vult=r
+SCRNPZZA=Pizza Steve=r
+SCRNSPRE=The Spire=b
+SCRNEYE=The Eye=b
+SCRNSENS=SENS=b
+SCRN1022=Claustrophobia 2=g
+SCRN1023=Claustrophobia=g
+SCRN1024=Congestion 1024=g
+SCRNAA=Ancient Aliens=g
+SCRNVAL=Valiant=g
+SCRNBTX=Back to Saturn X - EP1=g
+SCRNCC1=Community Chest 1=g
+SCRNCC2=Community Chest 2=g
+SCRNCC3=Community Chest 3=g
+SCRNCC4=Community Chest 4=g
+SCRNCHAI=Chainworm=g
+SCRNDU=Destination Unknown=r
+SCRNDV2=Deus Vult 2=r
+SCRNEPI1=Epic=g=wip
+SCRNEPI2=Epic 2=g=wip
+SCRNINT=Interception=g
+SCRNNG2=New Gothic Movement 2=r
+SCRNNOV=Nova=g
+SCRNRDX=Doom2 Redux=g
+SCRNSD6=Stardate 20x6=g
+SCRNSD7=Stardate 20x7=g
+SCRNSF3=SlaughterFest 2013=r
+SCRNSF12=SlaughterFest 2012=r
+SCRNSWI=Swim with the Whales=g
+SCRNZ300=Zone 300=g
+SCRNZOF=Zones of Fear=g
+SCRNLAX=Chillax=r
+SCRNHC=Hell Core=g
+SCRN0000=A Clear Line Drawn=b
+SCRNTSP2=The Spire 2=b
