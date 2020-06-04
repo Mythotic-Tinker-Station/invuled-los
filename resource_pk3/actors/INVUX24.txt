@@ -1,0 +1,381 @@
+Actor Fakeunillus : Doomimp
+{+HEXENBOUNCE}  //lel
+
+ACTOR Unillus replaces FakeUnillus
+{  Health 1000
+  Radius 20
+  Height 56
+  Mass 100
+  Speed 12
+  Translation "1:255=4:4"
+  PainChance 20
+  Bloodcolor black
+  Monster
+  +FLOORCLIP
+  SeeSound "imp/sight"
+  PainSound "imp/pain"
+  DeathSound "imp/death"
+  ActiveSound "imp/active"
+  HitObituary "Um, what exactly does this line even do?"
+  Obituary "%o was blinded by Unillus"
+  States
+  {
+  Spawn:
+    TROO AAABBB 3 A_Look
+    Loop
+  See:
+    TROO AABBCCDD 3 A_Chase
+    Loop
+  Missile:
+    TROO EF 4 A_FaceTarget
+    TNT1 A 0 A_Jump(120,"Flash")
+    TROO G 8 Bright A_CustomMissile("Reenbou", 28, 0, 0, 0)
+    TROO G 0 Bright A_CustomMissile("Reenbou", 28, 0, random(-15,15), random(-15,15))
+    Goto See
+    Flash:
+    TROO G 0 A_SpawnItemEx("WhiteIllus",0,0,0,0)
+    TNT1 A 8 A_Changeflag("Solid",0)
+    Goto SeriousFlash
+  SeriousFlash:
+  TNT1 A 3 A_Wander
+  TNT1 A 0 A_SpawnItemEx("RedIllus",random(-150,-10),random(50,150),0,0,0,0)
+  TNT1 A 0 A_SpawnItemEx("OraIllus",random(-50,10),random(-150,150),0,0,0,0)
+  TNT1 A 0 A_SpawnItemEx("YelIllus",random(-150,150),random(-10,50),0,0,0,0)
+  TNT1 A 0 A_SpawnItemEx("GreIllus",random(-100,100),random(-100,100),0,0,0,0)
+  TNT1 A 0 A_SpawnItemEx("BluIllus",random(-150,150),random(-150,150),0,0,0,0)
+  TNT1 A 0 A_SpawnItemEx("PurIllus",0,random(-150,150),0,0,0,0)
+  TNT1 A 0 A_SpawnItemEx("PinIllus",random(-150,150),0,0,0,0,0)
+  TNT1 AAAAAAAAA 0 A_wander
+  TNT1 A 0 A_Jumpifinventory("poop",40,"Deflash")
+  TNT1 A 0 A_GiveInventory("poop",1)
+  Loop
+  Deflash:
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1  //ehh.
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1
+  TROO G 1
+  TNT1 A 1 A_ChangeFlag("SOLID",1)
+  TROO A 1 A_TakeInventory("poop",1337)
+  Goto See
+  Pain:
+    TROO H 4
+    TROO H 4 A_Pain
+    Goto See
+  Death:
+    TROO H 3 A_Pain
+TROO HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 A_Fadeout(0.02)
+Stop}}
+
+
+Actor Whiteillus
+{-SOLID
++RIPPER
+Damage 1
+Translation "1:255=4:4"
+States{
+Spawn:
+TROO E 1 A_Fadeout(0.1)
+Loop}}
+
+Actor RedIllus : WhiteIllus
+{Translation "1:255=175:175"
+States{
+spawn:
+TROO A 2 A_Fadeout(0.2)
+Loop}}
+
+Actor OraIllus : RedIllus
+{Translation "1:255=215:215"}
+Actor YelIllus : RedIllus
+{Translation "1:255=230:230"}
+Actor GreIllus : RedIllus
+{Translation "1:255=116:116"}
+Actor BluIllus : RedIllus
+{Translation "1:255=198:198"}
+Actor PurIllus : RedIllus
+{Translation "1:255=206:206"}
+Actor PinIllus : RedIllus
+{Translation "1:255=251:251"}
+
+
+ACTOR POOP : Inventory
+{
+inventory.maxamount 999999
+States{
+Spawn:
+TNT1 A -1
+Loop}
+}
+
+actor Unillus: CustomMonsterInvasionSpot 670
+{
+	dropitem FakeUnillus
+}
+
+Actor Rainbow
+{+CEILINGHUGGER
++MISSILE
++NOGRAVITY
++RIPPER
++BLOODLESSIMPACT
+States
+{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_GiveInventory("POOP",1)
+TNT1 A 0 A_SpawnItemEx("PlasmaballSpawner",250,0,0,0,0,-10)
+TNT1 A 0 A_Jumpifinventory("POOP",28,2)
+TNT1 A 0 A_SetAngle(Angle+10)
+Goto Spawn
+TNT1 A 0
+stop
+}}
+
+ACTOR PlasmaballSpawner
+{+MISSILE
+-SOLID
+Damage 15
+Translation "123:207=004:207"
+Gravity 0.1
+States
+{
+Spawn:
+PLSS ABAB 6
+PLSS CD 6 Bright
+TNT1 A 0 A_SpawnItemEx("PlasmaballRed", 0,0,0,random(-3,3),random(-3,3),17)
+TNT1 A 0 A_SpawnItemEx("PlasmaballOra", 0,0,0,random(-3,3),random(-3,3),13)
+TNT1 A 0 A_SpawnItemEx("PlasmaballYel", 0,0,0,random(-3,3),random(-3,3),11)
+TNT1 A 0 A_SpawnItemEx("PlasmaballGre", 0,0,0,random(-3,3),random(-3,3),8)
+TNT1 A 0 A_SpawnItemEx("PlasmaballBlu", 0,0,0,random(-3,3),random(-3,3),5)
+TNT1 A 0 A_SpawnItemEx("PlasmaballPur", 0,0,0,random(-3,3),random(-3,3),2)
+TNT1 A 0 A_SpawnItemEx("PlasmaballPin", 0,0,0,random(-3,3),random(-3,3),-1)
+stop
+}}
+
+Actor Boomer
+{Damagetype Boss
+Projectile
+Obituary "%o was crushed under Illus King's feet."
++RIPPER
++BLOODLESSIMPACT
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_Explode(50,350)
+stop}}
+
+Actor PlasmaballRed: PlasmaBall
+{
++HEXENBOUNCE
+-NOGRAVITY
++SKYEXPLODE
+Damage 10
+Scale 2
+Radius 26
+Height 16
+Translation "192:207=168:191"
+Gravity 0.1
+States{
+Spawn:
+PLSS ABABABABABABABABABAB 10
+PLSS A 0 A_Changeflag("HEXENBOUNCE", 0)
+Loop}}
+Actor PlasmaballOra: PlasmaballRed
+{ Translation "192:207=208:223"}
+Actor PlasmaballYel: PlasmaballRed
+{ Translation "192:207=224:231"}
+Actor PlasmaballGre: PlasmaballRed
+{ Translation "192:207=112:121"}
+Actor PlasmaballBlu: PlasmaballRed
+{ Translation "192:207=192:207"} // '_'
+Actor PlasmaballPur: PlasmaballRed
+{ Translation "192:207=241:246"}
+Actor PlasmaballPin: PlasmaballRed
+{ Translation "192:207=250:254"}
+
+Actor PlasmaballRed2: PlasmaBall
+{
+-HEXENBOUNCE
++NOGRAVITY
++SKYEXPLODE
+Speed 20
+Damage (10)
+Translation "192:207=168:191"
+States{
+Spawn:
+PLSS ABABABABABABABABABAB 10
+Loop}}
+Actor PlasmaballOra2: PlasmaballRed2
+{ Translation "192:207=208:223"}
+Actor PlasmaballYel2: PlasmaballRed2
+{ Translation "192:207=224:231"}
+Actor PlasmaballGre2: PlasmaballRed2
+{ Translation "192:207=112:127"}
+Actor PlasmaballBlu2: PlasmaballRed2
+{ Translation "192:207=192:207"} // '_'
+Actor PlasmaballPur2: PlasmaballRed2
+{ Translation "192:207=241:246"}
+Actor PlasmaballPin2: PlasmaballRed2
+{ Translation "192:207=250:254"}
+
+ACTOR RainbowCaco: Cacodemon
+{Health 200
+Speed 20
+floatspeed 25
+Obituary "%o was mesmerised by Rainbow Caco's wild dance."
+Translation "9:12=168:171", "16:31=192:207",  "32:39=208:223", "40:47=224:231", "112:121=224:231", "122:124=224:231", "125:126=241:246", "127:127=112:127", "160:163=250:254", "164:165=72:76", "166:166=112:127", "167:167=250:254", "168:175=241:246", "176:180=168:191", "181:186=5:8", "187:190=250:254", "191:191=250:254", "192:207=168:190", "223:223=168:191", "235:235=250:254", "240:246=168:191"
+States{
+Missile:
+    DRON A 0 A_Jump(150,23)      //copied from one of my personal projects. Hence the 'DRON'.
+    DRON A 0 ThrustThing(angle*256/360+64, 36, 0, 0)
+HEAD C 2 Bright A_CustomMissile("PlasmaballRed2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, 36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD B 2 Bright A_CustomMissile("PlasmaballOra2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, 36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD C 2 Bright A_CustomMissile("PlasmaballYel2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, 36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD B 2 Bright A_CustomMissile("PlasmaballGre2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, 36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD C 2 Bright A_CustomMissile("PlasmaballBlu2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, 36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD B 2 Bright A_CustomMissile("PlasmaballPur2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, 36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD C 2 Bright A_CustomMissile("PlasmaballPin2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 A_Stop
+Goto see
+    DRON A 0
+    DRON A 0 ThrustThing(angle*256/360+64, -36, 0, 0)
+HEAD C 2 Bright A_CustomMissile("PlasmaballRed2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, -36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD B 2 Bright A_CustomMissile("PlasmaballOra2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, -36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD C 2 Bright A_CustomMissile("PlasmaballYel2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, -36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD B 2 Bright A_CustomMissile("PlasmaballGre2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, -36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD C 2 Bright A_CustomMissile("PlasmaballBlu2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, -36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD B 2 Bright A_CustomMissile("PlasmaballPur2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 ThrustThing(angle*256/360+64, -36, 0, 0)
+    DRON B 0 A_FaceTarget
+HEAD C 2 Bright A_CustomMissile("PlasmaballPin2", 7, random(-2,2), random(-2,2), 0)
+    DRON A 0 A_Stop
+Goto see}}
+
+
+actor RainbowCacoSpawner: CustomMonsterInvasionSpot 671
+{
+	dropitem RainbowCaco
+}
+
+
+ACTOR REENBOU : PLASMABALL
+{+RIPPER
+-NOCLIP
++HEXENBOUNCE
++SOLID
++SKYEXPLODE
+Bouncecount 5
+Projectile
+Radius 6
+Height 12
+Damage 0
+Scale 2
+Speed 15
+States{
+Spawn:
+TNT1 A 1
+TNT1 A 0 A_SpawnItemEx("PlasmaballRed2", 10,20,-20,0,0,0)
+TNT1 A 0 A_SpawnItemEx("PlasmaballOra2", 20,-20,-30,0,0,0)
+TNT1 A 0 A_SpawnItemEx("PlasmaballYel2", -30,30,20,0,0,0)
+TNT1 A 0 A_SpawnItemEx("PlasmaballGre2", -50,20,0,0,0,0)
+TNT1 A 0 A_SpawnItemEx("PlasmaballBlu2", 70,70,30,0,0,0)
+TNT1 A 0 A_SpawnItemEx("PlasmaballPur2", -80,-80,-30,0,0,0)
+TNT1 A 0 A_SpawnItemEx("PlasmaballPin2", 100,-130,0,0,0,0)
+TNT1 A 0 A_SetAngle(angle+7)
+loop
+DEATH:
+PLSS CDE 3
+Stop}}
+
+
+Actor PlasmaballRed2: PlasmaBall
+{+NOGRAVITY
++RIPPER
++BLOODLESSIMPACT
+Radius 3
+Height 3
+Obituary "%o was blinded by Unillus."
+Damage 1
+Translation "192:207=168:191"
+States{
+Spawn:
+TNT1 A 0
+PLSS AAAAAAAAAAAAAAA 1 A_Fadeout(0.09)
+Stop
+Death:
+TNT1 A 0
+Stop}}
+
+Actor PlasmaballOra2: PlasmaballRed2
+{ Translation "192:207=208:223"}
+Actor PlasmaballYel2: PlasmaballRed2
+{ Translation "192:207=224:231"}
+Actor PlasmaballGre2: PlasmaballRed2
+{ Translation "192:207=112:127"}
+Actor PlasmaballBlu2: PlasmaballRed2
+{ Translation "192:207=192:207"} // '_'
+Actor PlasmaballPur2: PlasmaballRed2
+{ Translation "192:207=242:245"}
+Actor PlasmaballPin2: PlasmaballRed2
+{ Translation "192:207=250:254"}
+

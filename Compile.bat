@@ -3,25 +3,25 @@
 
 :Init
 
-set FileName=Lexicon
-set MusFileName=Lexicon-miscdata
+set FileName=invuled-los
+set ResFileName=invuled-los-res
 
 set Compression=9
 
 set Path_BCS=Compiler
-set Path_Script=..\pk3\ACS\Lexicon
+set Path_Script=..\pk3\ACS\TEHACS
 set Path_7z=..\Compiler\7za
 set Path_Backwards=..
 
 set GotoBCS=Compile_Main
-set GotoCompileMain=Compile_Music
+set GotoCompileMain=Compile_Res
 
 
 if "%PROCESSOR_ARCHITECTURE%" == "AMD64" ( 
 	set Path_BCS=Compiler\x64
 	set Path_7z=..\Compiler\x64\7za
 	set Path_Backwards=..\..\
-	set Path_Script=..\..\pk3\ACS\Lexicon
+	set Path_Script=..\..\pk3\ACS\TEHACS
 )
 
 echo CPU: "%PROCESSOR_ARCHITECTURE%"
@@ -32,12 +32,12 @@ echo.
 echo      Full Compression (slow):
 echo           1: Compile Everything
 echo           2: Compile Main PK3
-echo           3: Compile Music PK3
+echo           3: Compile Resource PK3 (For map making and contributors)
 echo.
 echo      No Compression (fast):
 echo           4: Compile Everything
 echo           5: Compile Main PK3
-echo           6: Compile Music PK3
+echo           6: Compile Resource PK3 (For map making and contributors)
 echo.
 echo      BCS:
 echo           7: Compile only BCS scripts.
@@ -48,11 +48,11 @@ Choice /c 1234567 /N /M Choose:
 
 If ERRORLEVEL 7 goto Compile_BCS_Only
 
-If ERRORLEVEL 6 goto None_Compile_Music
+If ERRORLEVEL 6 goto None_Compile_Res
 If ERRORLEVEL 5 goto None_Compile_Main_Only
 If ERRORLEVEL 4 goto None_Compile_BCS
 
-If ERRORLEVEL 3 goto Compile_Music_only
+If ERRORLEVEL 3 goto Compile_Res_only
 If ERRORLEVEL 2 goto Compile_Main_Only
 If ERRORLEVEL 1 goto Compile_BCS
 
@@ -74,10 +74,10 @@ If ERRORLEVEL 1 goto Compile_BCS
 
 
 
-:None_Compile_Music
+:None_Compile_Res
 	set Compression=0
-:Compile_Music_Only
-	set GotoBCS=Compile_Music
+:Compile_Res_Only
+	set GotoBCS=Compile_Res
 	goto Compile_BCS
 
 
@@ -109,14 +109,14 @@ echo PACK GAME FILES
 
 
 
-:Compile_Music
-echo PACK MUSIC AND MISC. FILES
+:Compile_Res
+echo PACK Resource PK3 MISC. FILES
 	cd %Path_Backwards%
-	cd music_pk3
-	%Path_7z% a -r -ssw -mx%Compression% -tzip  ..\%MusFileName%n.pk3 *
+	cd resource_pk3
+	%Path_7z% a -r -ssw -mx%Compression% -tzip  ..\%ResFileName%n.pk3 *
 	cd ..
-	del %MusFileName%.pk3
-	ren %MusFileName%n.pk3 %MusFileName%.pk3
+	del %ResFileName%.pk3
+	ren %ResFileName%n.pk3 %ResFileName%.pk3
 	goto Finish
 
 

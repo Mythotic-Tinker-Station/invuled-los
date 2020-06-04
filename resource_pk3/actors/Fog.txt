@@ -1,0 +1,120 @@
+//Documentation
+//=================
+//Place the FogCloud_Generator on your map, and use values set on the specials tab to modify it
+
+//The first argument sets the radius of the circle the clouds spawn in.
+//If ARGS[0] is left as 0, the spawner defaults to a 96 radius circle.
+
+
+
+Actor FogCloud_Generator 15001
+{
+    // GZDoom Builder Configuration
+    // ==============================
+        //$Title "Fog"
+        //$Category "Special Effects"
+        //$Color 9
+        //$Sprite AWCFA0B0
+        //$NotAngled
+        // ----
+        //$Arg0 "Radius"
+        //$Arg0Type 0
+        //$Arg0ToolTip "Radius of the circle"
+        //$Arg0Default 96
+    // ------------------------------
+    // ==============================
+    +Missile
+    +NoBlockmap
+    +NoGravity
+    +NoSector
+    +ClientSideOnly
+    Radius 1
+    Height 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 A_JumpIf(ARGS[0]!=0,"MaperInput")
+        TNT1 A 0 A_Jump(128,1,2)
+        TNT1 A 0 A_SpawnItemEx ("FogCloud_V1", random(random(-96, 96), random(-64, 64)), 0, random(0, random(32, 48)), 0, 0, 0, Random(0, 360), 129) 
+        TNT1 A 0 A_SpawnItemEx ("FogCloud_V2", random(random(-96, 96), random(-64, 64)), 0, random(0, random(32, 48)), 0, 0, 0, Random(0, 360), 129) 
+        TNT1 A 0 A_SpawnItemEx ("FogCloud_V3", random(random(-96, 96), random(-64, 64)), 0, random(0, random(32, 48)), 0, 0, 0, Random(0, 360), 129) 
+        stop
+    MaperInput:
+        TNT1 A 0 A_Jump(128,1,2)
+        TNT1 A 0 A_SpawnItemEx ("FogCloud_V1", random(-ARGS[0],ARGS[0]), 0, random(0, random(32, 48)), 0, 0, 0, Random(0, 360), 129) 
+        TNT1 A 0 A_SpawnItemEx ("FogCloud_V2", random(-ARGS[0],ARGS[0]), 0, random(0, random(32, 48)), 0, 0, 0, Random(0, 360), 129) 
+        TNT1 A 0 A_SpawnItemEx ("FogCloud_V3", random(-ARGS[0],ARGS[0]), 0, random(0, random(32, 48)), 0, 0, 0, Random(0, 360), 129) 
+        stop
+    }
+}
+
+
+
+Actor FogCloud_V1
+{
+    // Standards
+    // ===========
+        +ForceXYBillboard // Usable only for when Voxels is disabled and using Sprites.
+    // ------
+    // ======
+
+    +Missile
+    +NoGravity
+    +NoBlockmap
+    Radius 1
+    Height 1
+    Speed 0
+    RenderStyle add
+    Alpha 0.25
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 A_SetScale(Random(2,2.25))
+        TNT1 A 0 A_Jump(256,1,2,3,4)
+        AWCF ABCD 0 A_Jump(256,"Coolness")
+    Coolness:
+        "----" AAAAAAAAAAAAAAAAAAAA 10 A_FadeIn(0.002)
+        "----" A 0 A_Jump(256,0,1,2,3,4,5,6,7,8,9,10,11,12,13)
+        "----" AAAAAAAAAAAAAA 4
+        "----" AAAAAAAAAAAAAAAAAAAA 10 A_FadeOut(0.002)
+        "----" A 0 A_Jump(256,0,1,2,3,4,5,6,7,8,9,10,11,12,13)
+        AWCF AAAAAAAAAAAAAA 4
+        loop
+    }
+}
+
+
+
+Actor FogCloud_V2 : FogCloud_V1
+{
+    States
+    {
+    Coolness:
+        "----" AAAAAAAAAAAAAA 11 A_FadeIn(0.002)
+        "----" A 0 A_Jump(256,0,1,2,3,4,5,6,7,8,9,10,11,12,13)
+        "----" AAAAAAAAAAAAAA 5
+        "----" AAAAAAAAAAAAAA 11 A_FadeOut(0.002)
+        "----" A 0 A_Jump(256,0,1,2,3,4,5,6,7,8,9,10,11,12,13)
+        "----" AAAAAAAAAAAAAA 5
+        loop
+    }
+}
+
+
+
+Actor FogCloud_V3 : FogCloud_V1
+{
+    States
+    {
+        Coolness:
+        "----" AAAAAAAAAAAAAA 12 A_FadeIn(0.002)
+        "----" A 0 A_Jump(256,0,1,2,3,4,5,6,7,8,9,10,11,12,13)
+        "----" AAAAAAAAAAAAAA 6
+        "----" AAAAAAAAAAAAAA 12 A_FadeOut(0.002)
+        "----" A 0 A_Jump(256,0,1,2,3,4,5,6,7,8,9,10,11,12,13)
+        "----" AAAAAAAAAAAAAA 6
+        loop
+    }
+}

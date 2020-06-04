@@ -1,0 +1,4 @@
+Texture TX5_000, 128, 96
+{
+    Patch SP_FACE1, 0, 0
+}

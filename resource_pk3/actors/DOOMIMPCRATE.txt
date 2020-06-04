@@ -1,0 +1,572 @@
+ACTOR DoomImpCrate 15081
+{
+  Health 600
+  Radius 20
+  Height 56
+  Mass 100000
+  +DONTMORPH
+  +DONTSQUASH
+  +BOSSDEATH
+  Speed 8
+  PainChance 100
+  Monster
+  +FLOORCLIP
+  SeeSound "imp/sight"
+  PainSound "imp/pain"
+  DeathSound "imp/death"
+  ActiveSound "imp/active"
+  Obituary "%o was killed by an Imp."
+  HitObituary "%o got killed by an Imp."
+  States
+  {
+  Spawn:
+    TROO AB 10 A_Look
+    Loop
+  See:
+    TROO AABBCCDD 3 A_Chase
+    Loop
+  Melee:
+    TROO A 0 A_Jump(256, "TroopAttack")
+  Missile:
+    TROO A 0 A_Jump(256, "Crate", "TroopAttack")
+    Goto See
+  Crate:
+    TROP AB 8 A_FaceTarget
+    TROP C 6
+    TROP C 0 A_Jump(256, "CrateGreen", "CrateGrey", "CrateRed", "CrateBrown")
+  CrateBrown:
+    TROP PQRSTS 6
+    TROP T 6
+    TROP I 8 A_CustomMissile ("CrateBRWN",32,0,0,0)
+    Goto See
+  CrateGreen:
+    TROP JKLMNM 6
+    TROP N 6
+    TROP I 8 A_CustomMissile ("CrateGRN",32,0,0,0)
+    Goto See
+  CrateGrey:
+    TROP VWXYZY 6
+    TROP Z 6
+    TROP I 8 A_CustomMissile ("CrateGRY",32,0,0,0)
+    Goto See
+  CrateRed:
+    TROP DEFGHG 6
+    TROP H 6
+    TROP I 8 A_CustomMissile ("CrateRD",32,0,0,0)
+    Goto See
+  TroopAttack:
+    TROO EF 8 A_FaceTarget
+    TROO G 6 A_TroopAttack
+    Goto See
+  Pain:
+    TROO H 2
+    TROO H 2 A_Pain
+    Goto See
+  Death:
+    TROO I 8
+    TROO J 8 A_Scream
+    TROO K 6
+    TROO L 6 A_NoBlocking
+    TROO M -1
+    Stop
+  XDeath:
+    TROO N 5
+    TROO O 5 A_XScream
+    TROO P 5
+    TROO Q 5 A_NoBlocking
+    TROO RST 5
+    TROO U -1
+    Stop
+  Raise:
+    TROO MLKJI 8
+    Goto See
+  }
+}
+
+ACTOR CrateBRWN
+{
+  Radius 14
+  Height 12
+  Speed 25
+  FastSpeed 35
+  Damage 5
+  Projectile
+  DeathSound "DoomImp/Crate"
+  SeeSound ""
+  +WINDTHRUST
+  -ACTIVATEIMPACT
+  -ACTIVATEPCROSS
+  -NOBLOCKMAP
+  States
+  {
+  Spawn:
+    BRBX A 4 Bright // A_SpawnItem("SmokeTrail")
+    Loop
+  Death:
+    TNT1 A 1
+    TNT1 A 0 A_CustomMissile("CrateFragment01", 48, 0, 0)
+    TNT1 A 0 A_CustomMissile("CrateFragment02", 48, 0, -30)
+    TNT1 A 0 A_CustomMissile("CrateFragment03", 48, 0, 30)
+    TNT1 A 0 A_CustomMissile("CrateFragment04", 48, 0, -60)
+    TNT1 A 0 A_CustomMissile("CrateFragment01", 48, 0, 60)
+    TNT1 A 0 A_CustomMissile("CrateFragment02", 48, 0, -90)
+    TNT1 A 0 A_CustomMissile("CrateFragment03", 48, 0, 90)
+    TNT1 A 0 A_CustomMissile("CrateFragment04", 48, 0, -120)
+    //BRNA ABCD 5 Bright // A_Explode(random[S2FX1](80,111))
+    Stop
+  }
+}
+
+ACTOR CrateFragment01 // brown
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    BRNA ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment02 // brown
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    BRNB ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment03 // brown
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    BRNC ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment04 // brown
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    BRND ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateGRN
+{
+  Radius 14
+  Height 12
+  Speed 25
+  FastSpeed 35
+  Damage 5
+  Projectile
+  DeathSound "DoomImp/Crate"
+  SeeSound ""
+  +WINDTHRUST
+  -ACTIVATEIMPACT
+  -ACTIVATEPCROSS
+  -NOBLOCKMAP  
+  States
+  {
+  Spawn:
+    GNBX A 4 Bright // A_SpawnItem("SmokeTrail")
+    Loop
+  Death:
+    TNT1 A 1
+    TNT1 A 0 A_CustomMissile("CrateFragment05", 48, 0, 0)
+    TNT1 A 0 A_CustomMissile("CrateFragment06", 48, 0, -30)
+    TNT1 A 0 A_CustomMissile("CrateFragment07", 48, 0, 30)
+    TNT1 A 0 A_CustomMissile("CrateFragment08", 48, 0, -60)
+    TNT1 A 0 A_CustomMissile("CrateFragment05", 48, 0, 60)
+    TNT1 A 0 A_CustomMissile("CrateFragment06", 48, 0, -90)
+    TNT1 A 0 A_CustomMissile("CrateFragment07", 48, 0, 90)
+    TNT1 A 0 A_CustomMissile("CrateFragment08", 48, 0, -120)
+    //BRNA ABCD 5 Bright // A_Explode(random[S2FX1](80,111))
+    Stop
+  }
+}
+
+ACTOR CrateFragment05 // green
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRNA ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment06 // green
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRNB ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment07 // green
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRNC ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment08 // green
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRND ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateGRY
+{
+  Radius 14
+  Height 12
+  Speed 25
+  FastSpeed 35
+  Damage 5
+  Projectile
+  DeathSound "DoomImp/Crate"
+  SeeSound ""
+  +WINDTHRUST
+  -ACTIVATEIMPACT
+  -ACTIVATEPCROSS
+  -NOBLOCKMAP  
+  States
+  {
+  Spawn:
+    GYBX A 4 Bright // A_SpawnItem("SmokeTrail")
+    Loop
+  Death:
+    TNT1 A 1
+    TNT1 A 0 A_CustomMissile("CrateFragment09", 48, 0, 0)
+    TNT1 A 0 A_CustomMissile("CrateFragment10", 48, 0, -30)
+    TNT1 A 0 A_CustomMissile("CrateFragment11", 48, 0, 30)
+    TNT1 A 0 A_CustomMissile("CrateFragment12", 48, 0, -60)
+    TNT1 A 0 A_CustomMissile("CrateFragment09", 48, 0, 60)
+    TNT1 A 0 A_CustomMissile("CrateFragment10", 48, 0, -90)
+    TNT1 A 0 A_CustomMissile("CrateFragment11", 48, 0, 90)
+    TNT1 A 0 A_CustomMissile("CrateFragment12", 48, 0, -120)
+    //BRNA ABCD 5 Bright // A_Explode(random[S2FX1](80,111))
+    Stop
+  }
+}
+
+ACTOR CrateFragment09 // grey
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRYA ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment10 // grey
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRYB ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment11 // grey
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRYC ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment12 // grey
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    GRYD ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateRD
+{
+  Radius 14
+  Height 12
+  Speed 25
+  FastSpeed 35
+  Damage 5
+  Projectile
+  DeathSound "DoomImp/Crate"
+  SeeSound ""
+  +WINDTHRUST
+  -ACTIVATEIMPACT
+  -ACTIVATEPCROSS
+  -NOBLOCKMAP  
+  States
+  {
+  Spawn:
+    RDBX A 4 Bright // A_SpawnItem("SmokeTrail")
+    Loop
+  Death:
+    TNT1 A 1
+    TNT1 A 0 A_CustomMissile("CrateFragment13", 48, 0, 0)
+    TNT1 A 0 A_CustomMissile("CrateFragment14", 48, 0, -30)
+    TNT1 A 0 A_CustomMissile("CrateFragment15", 48, 0, 30)
+    TNT1 A 0 A_CustomMissile("CrateFragment16", 48, 0, -60)
+    TNT1 A 0 A_CustomMissile("CrateFragment13", 48, 0, 60)
+    TNT1 A 0 A_CustomMissile("CrateFragment14", 48, 0, -90)
+    TNT1 A 0 A_CustomMissile("CrateFragment15", 48, 0, 90)
+    TNT1 A 0 A_CustomMissile("CrateFragment16", 48, 0, -120)
+    //BRNA ABCD 5 Bright // A_Explode(random[S2FX1](80,111))
+    Stop
+  }
+}
+
+ACTOR CrateFragment13 // red
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    REDA ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment14 // red
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    REDB ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment15 // red
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    REDC ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
+
+ACTOR CrateFragment16 // red
+{
+  Radius 4
+  Height 8
+  Speed 2
+  Projectile
+  - NoGravity
+  +LowGravity
+  +DoomBounce
+  Damage 1
+  //Scale 0.75
+  +ClientSideOnly
+  States
+  {
+  Spawn:
+    REDD ABCDABCDABCDABCDABCDABCDABCDABCD 4
+  Death:
+    TNT1 AA -1 A_Gravity
+    Stop
+  }
+}
