@@ -7,7 +7,7 @@
 {
 	mapname = INVUX02
 	gamemode = invasion
-	wavelimit = 10
+	wavelimit = 6
 } 
 
 {

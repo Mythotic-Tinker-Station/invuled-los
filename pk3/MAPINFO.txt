@@ -21,10 +21,10 @@ map INVUX01 "Enter: The Future.. Again"
 	SecretNext = INVUX02
 }
 
-map INVUX02 "Hell Storm"
+map INVUX02 "Red sun zenith"
 {
 	LevelNum = 2
-	//Sky1 = ""
+	Sky1 = "OSKY18"
 	Music = "D_INV02"
 	EnterPic = ""
 	ExitPic = ""
