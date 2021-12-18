@@ -38,3 +38,212 @@ object DarkImpBall
     frame DIMBD { light DarkImpBall_X2 }
     frame DIMBE { light DarkImpBall_X3 }
 }
+Pointlight Blue1
+{
+    color 0.0 0.0 1.0
+    size 24
+}
+
+Pointlight Blue2
+{
+    color 0.0 0.0 1.0
+    size 26
+}
+
+Pointlight Blue3
+{
+    color 0.0 0.0 1.0
+    size 28
+}
+
+Pointlight Blue4
+{
+    color 0.0 0.0 1.0
+    size 30
+}
+
+pointlight Blue5
+{
+    color 0.0 0.0 1.0
+    size 64
+}
+
+Pointlight Red1
+{
+    color 1.0 0.0 0.0
+    size 24
+}
+
+Pointlight Red2
+{
+    color 1.0 0.0 0.0
+    size 26
+}
+
+Pointlight Red3
+{
+    color 1.0 0.0 0.0
+    size 28
+}
+
+Pointlight Red4
+{
+    color 1.0 0.0 0.0
+    size 30
+}
+
+Pointlight Yellow1
+{
+    color 1.0 1.0 0.0
+    size 26
+}
+
+Pointlight Yellow2
+{
+    color 1.0 1.0 0.0
+    size 32
+}
+
+Pointlight Yellow3
+{
+    color 1.0 1.0 0.0
+    size 48
+}
+
+Pointlight Yellow4
+{
+    color 1.0 1.0 0.0
+    size 64
+}
+
+Pointlight Yellow5
+{
+    color 1.0 1.0 0.0
+    size 80
+}
+
+
+pointlight White1
+{
+    color 1.0 1.0 1.0
+    size 24
+}
+
+pointlight White2
+{
+    color 1.0 1.0 1.0
+    size 26
+}
+
+pointlight White3
+{
+    color 1.0 1.0 1.0
+    size 28
+}
+
+pointlight White4
+{
+    color 1.0 1.0 1.0
+    size 30
+}
+
+pointlight White5
+{
+    color 1.0 1.0 1.0
+    size 64
+}
+
+Object Redentor
+{
+    Frame MISLA { Light Blue1 }
+    Frame MISLB { Light Blue2 }
+    Frame MISLC { Light Blue3 }
+    Frame MISLD { Light Blue4 }
+}
+
+Object Fatshot2
+{
+    Frame MANFA { Light Blue1 }
+    Frame MANFB { Light Blue1 }
+    Frame MISLB { Light Blue2 }
+    Frame MISLC { Light Blue3 }
+    Frame MISLD { Light Blue4 }
+}
+
+Object PlasmaExplosive
+{
+    Frame PLSEA { Light Blue1 }
+    Frame PLSEB { Light Blue1 }
+    Frame PLSEC { Light Blue2 }
+    Frame PLSED { Light Blue3 }
+    Frame PLSEE { Light Blue4 }
+}
+
+Object NewTP
+{
+    Frame MANFA { Light Red1 }
+    Frame MANFB { Light Red1 }
+    Frame MISLB { Light Red2 }
+    Frame MISLC { Light Red3 }
+    Frame MISLD { Light Red4 }
+}
+
+Object BaronBall2
+{
+    Frame BAL7A { Light Red1 }
+    Frame BAL7B { Light Red1 }
+    Frame BAL7C { Light Red2 }
+    Frame BAL7D { Light Red2 }
+    Frame BAL7E { Light Red3 }
+}
+
+Object DragonFire
+{
+    Frame FIREA { Light Yellow1 }
+    Frame FIREB { Light Yellow1 }
+    Frame FIREC { Light Yellow1 }
+    Frame FIRED { Light Yellow1 }
+    Frame FIREE { Light Yellow1 }
+    Frame FIREH { Light Yellow1 }
+    Frame FIREG { Light Yellow1 }
+    Frame FIREF { Light Yellow1 }
+}
+
+Object Thunder
+{
+    Frame ZOT1A { Light Blue4 }
+    Frame ZOT1B { Light Blue4 }
+    Frame ZOT1C { Light Blue4 }
+    Frame ZOT1D { Light Blue4 }
+    Frame ZOT1E { Light Blue4 }
+}
+
+Object HUlkPlasmaBall
+{
+    Frame HBALA { Light White5 }
+    Frame HBALB { Light Blue5 }
+    Frame HBALC { Light White5 }
+    Frame HBALD { Light White5 }
+    Frame HBALE { Light Blue5 }
+    Frame HBALF { Light White5 }
+}
+
+Object FlameThrower
+{
+Frame FRFXA { Light Yellow1 }
+Frame FRFXB { Light Yellow1 }
+Frame FRFXC { Light Yellow2 }
+Frame FRFXD { Light Yellow2 }
+Frame FRFXE { Light Yellow2 }
+Frame FRFXF { Light Yellow3 }
+Frame FRFXG { Light Yellow3 }
+Frame FRFXH { Light Yellow4 }
+Frame FRFXI { Light Yellow4 }
+Frame FRFXJ { Light Yellow4 }
+Frame FRFXK { Light Yellow5 }
+Frame FRFXL { Light Yellow5 }
+Frame FRFXM { Light Yellow5 }
+Frame FRFXN { Light Yellow5 }
+Frame FRFXO { Light Yellow4 }
+Frame FRFXP { Light Yellow3 }
+}
