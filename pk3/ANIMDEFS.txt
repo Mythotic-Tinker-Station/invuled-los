@@ -72,3 +72,107 @@ TEXTURE TX1_0DP
 // Shadowmaker Specifics
 // -----------------
     WARP FLAT TX5_000
+	
+// Old Invuled Defs
+// -----------------
+
+warp2 flat sludgew2
+warp2 flat W2WATER1
+warp2 flat GRASSWTF
+
+texture UPSIDEW1
+   pic UPSIDEW1 tics 5
+   pic UPSIDEW2 tics 5
+   pic UPSIDEW3 tics 5
+   pic UPSIDEW4 tics 5
+
+flat AWATER01
+	pic AWATER01 tics 3
+	pic AWATER02 tics 3
+	pic AWATER03 tics 3
+	pic AWATER04 tics 3
+	pic AWATER05 tics 3
+	pic AWATER06 tics 3
+	pic AWATER07 tics 3
+	pic AWATER08 tics 3
+	pic AWATER09 tics 3
+	pic AWATER10 tics 3
+
+warp2 flat FWATER1
+
+warp2 FLAT lava1
+warp2 FLAT lava2
+warp2 FLAT lava3
+warp2 FLAT lava4
+
+texture RROCK19A
+pic RROCK19A tics 4
+pic RROCK19B tics 4
+pic RROCK19C tics 4
+pic RROCK19D tics 4
+pic RROCK19E tics 4
+pic RROCK19F tics 4
+pic RROCK19G tics 4
+pic RROCK19H tics 4
+pic RROCK19G tics 4
+pic RROCK19F tics 4
+pic RROCK19E tics 4
+pic RROCK19D tics 4
+pic RROCK19C tics 4
+pic RROCK19B tics 4
+
+warp2 flat sludgew2
+warp2 flat W2WATER1
+warp2 flat GRASSWTF
+
+texture UPSIDEW1
+   pic UPSIDEW1 tics 5
+   pic UPSIDEW2 tics 5
+   pic UPSIDEW3 tics 5
+   pic UPSIDEW4 tics 5
+
+flat AWATER01
+	pic AWATER01 tics 3
+	pic AWATER02 tics 3
+	pic AWATER03 tics 3
+	pic AWATER04 tics 3
+	pic AWATER05 tics 3
+	pic AWATER06 tics 3
+	pic AWATER07 tics 3
+	pic AWATER08 tics 3
+	pic AWATER09 tics 3
+	pic AWATER10 tics 3
+
+warp2 flat FWATER1
+
+warp2 FLAT lava1
+warp2 FLAT lava2
+warp2 FLAT lava3
+warp2 FLAT lava4
+
+texture RROCK19A
+pic RROCK19A tics 4
+pic RROCK19B tics 4
+pic RROCK19C tics 4
+pic RROCK19D tics 4
+pic RROCK19E tics 4
+pic RROCK19F tics 4
+pic RROCK19G tics 4
+pic RROCK19H tics 4
+pic RROCK19G tics 4
+pic RROCK19F tics 4
+pic RROCK19E tics 4
+pic RROCK19D tics 4
+pic RROCK19C tics 4
+pic RROCK19B tics 4
+
+warp2 flat WTF1
+warp2 flat WTF2
+warp flat WTF3
+warp flat WNUKEAGE
+
+flat watern1
+
+pic 1 tics 8
+pic 2 tics 8
+pic 3 tics 8
