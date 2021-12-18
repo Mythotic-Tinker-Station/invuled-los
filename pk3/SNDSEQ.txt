@@ -3,3 +3,37 @@
         playuntildone   ddoor
         nostopcutoff
 end
+
+:WolfSecret1
+
+Door		52
+Play    	WolfSecret
+
+End
+
+
+
+:WolfDoor1
+
+Door		12	
+PlayUntilDone	WolfDoorOpen
+Delay 175
+PlayUntilDone	WolfDoorClose
+
+End
+
+
+
+:WolfDoorOpen1
+
+Play            WolfDoorOpen
+
+End
+
+
+
+:WolfDoorClose1
+
+Play            WolfDoorClose
+
+End
