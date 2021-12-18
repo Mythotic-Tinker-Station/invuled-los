@@ -10348,3 +10348,233 @@ BrightMap Sprite TERMY0
 Map BMTERMY0
 DisableFullBright
 }
+
+// Old Invuled Defs
+pointlight MuzzleFlashSmall1
+{
+    color 1.0 0.6 0.3
+    size 60
+    offset 0 0 0
+}
+
+pointlight MuzzleFlashSmall2
+{
+    color 1.0 0.6 0.3
+    size 30
+    offset 0 0 0
+}
+
+object "MuzzleFlashSmall"
+{
+    frame TNT1A { light MuzzleFlashSmall1 }
+    frame TNT1B { light MuzzleFlashSmall2 }
+}
+
+PulseLight FrostFangShard1
+{
+Color 0.0 0.0 0.4
+Size 24
+SecondarySize 32
+Interval 3.0
+}
+
+PointLight FrostFangShard2
+{
+Color 0.0 0.0 0.5
+Size 32
+}
+
+PointLight FrostFangShard3
+{
+Color 0.0 0.0 0.7
+Size 40
+}
+
+PointLight FrostFangShard4
+{
+Color 0.0 0.0 0.55
+Size 44
+}
+
+PointLight FrostFangShard5
+{
+Color 0.0 0.0 0.3
+Size 28
+}
+
+PointLight FrostFangShard6
+{
+Color 0.0 0.0 0.1
+Size 16
+}
+
+PointLight FrostFangBall1
+{
+Color 0.5 0.5 1.0
+Size 64
+}
+
+PointLight FrostFangBall2
+{
+Color 0.7 0.7 1.0
+Size 64
+}
+
+PointLight FrostFangBall3
+{
+Color 0.7 0.7 1.0
+Size 72
+}
+
+PointLight FrostFangBall4
+{
+Color 0.4 0.4 1.0
+Size 64
+}
+
+PointLight FrostFangBall5
+{
+Color 0.3 0.3 0.5
+Size 48
+}
+
+PointLight FrostFangBall6
+{
+Color 0.1 0.1 0.3
+Size 32
+}
+
+Object FrostFangShard
+{
+Frame FFSDA { Light FrostFangShard1 }
+Frame FFSDB { Light FrostFangShard1 }
+Frame FFSDC { Light FrostFangShard1 }
+Frame FFSDD { Light FrostFangShard2 }
+Frame FFSDE { Light FrostFangShard3 }
+Frame FFSDF { Light FrostFangShard4 }
+Frame FFSDG { Light FrostFangShard5 }
+Frame FFSDH { Light FrostFangShard6 }
+}
+
+Object FrostFangBall
+{
+Frame TNT1 { Light FrostFangBall1 }
+Frame FFBLC { Light FrostFangBall2 }
+Frame FFBLD { Light FrostFangBall3 }
+Frame FFBLE { Light FrostFangBall4 }
+Frame FFBLF { Light FrostFangBall5 }
+Frame FFBLG { Light FrostFangBall6 }
+}
+
+//===========================================================================
+//
+//  Bio Proj lights by ThatOneZDoomer
+//
+//===========================================================================
+
+PointLight BioLightA
+{
+	Color 0.0 1.0 0.0
+	Size 32
+}
+
+FlickerLight BioLightB
+{
+	Color 0.0 1.0 0.0
+	Size 32
+	SecondarySize 40
+}
+
+Object BioProj
+{
+	Frame BPBPA { Light BioLightA }
+	Frame BPBPB { Light BioLightA }
+	Frame BPBPC { Light BioLightA }
+	Frame BPBPD { Light BioLightB }
+	Frame BPBPE { Light BioLightB }
+	Frame BPBPF { Light BioLightB }
+}
+
+pointlight ICEGLOWER
+{
+    color 0.5 0.5 1.0
+    size 20
+}
+
+object FreezeBlast
+{
+frame FBLS { light ICEGLOWER }
+}
+
+pointlight NUKEROCKET
+{
+    color 1.0 0.7 0.0
+    size 56
+}
+
+flickerlight NUKEROCKET_X1
+{
+    color 1.0 0.7 0.0
+    size 64
+    secondarySize 72
+    chance 0.3
+}
+
+flickerlight NUKEROCKET_X2
+{
+    color 0.5 0.1 0.0
+    size 80
+    secondarySize 88
+    chance 0.3
+}
+
+flickerlight NUKEROCKET_X3
+{
+    color 0.3 0.0 0.0
+    size 96
+    secondarySize 104
+    chance 0.3
+}
+
+object NuclearMissileShot
+{
+frame NKE1A { light NUKEROCKET }
+frame NKE1B { light NUKEROCKET_X3 }
+frame NKE1C { light NUKEROCKET_X3 }
+frame NKE1D { light NUKEROCKET_X3 }
+frame NKE1E { light NUKEROCKET_X3 }
+frame NKE1F { light NUKEROCKET_X2 }
+frame NKE1G { light NUKEROCKET_X2 }
+frame NKE1H { light NUKEROCKET_X2 }
+frame NKE1I { light NUKEROCKET_X2 }
+frame NKE1J { light NUKEROCKET_X1 }
+frame NKE1K { light NUKEROCKET_X1 }
+frame NKE1L { light NUKEROCKET_X1 }
+frame NKE1M { light NUKEROCKET_X1 }
+frame NKE1N { light NUKEROCKET }
+frame NKE1O { light NUKEROCKET }
+frame NKE1P { light NUKEROCKET }
+frame NKE1Q { light NUKEROCKET }
+}
+
+object NukeFire
+{
+frame NKFR { light NUKEROCKET }
+}
+
+object NukeExplosionGenerator
+{
+frame ROKE { light NUKEROCKET }
+}
+
+object NukeWall
+{
+frame FLWS { light NUKEROCKET }
+frame FLWE { light NUKEROCKET_X1 }
+}
+
+
+
+
+
+
