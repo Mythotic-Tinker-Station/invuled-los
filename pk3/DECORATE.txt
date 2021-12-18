@@ -54,3 +54,6 @@
 #include "actors/Fog.txt"
 #include "actors/Rain.txt"
 #include "actors/LightTower.txt"
+
+//Unsorted (Old Invasion Unleashed)
+#include "actors/INVU1.txt"
