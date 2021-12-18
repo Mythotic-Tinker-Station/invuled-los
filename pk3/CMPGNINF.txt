@@ -1,4 +1,184 @@
 {
+mapname = INVU01
+gamemode = invasion
+wavelimit = 10
+}
+
+{
+mapname = INVU02
+gamemode = invasion
+wavelimit = 9
+}
+
+{
+mapname = INVU03
+gamemode = invasion
+wavelimit = 10
+}
+
+{
+mapname = INVU04
+gamemode = invasion
+wavelimit = 7
+}
+
+{
+mapname = INVU05
+gamemode = invasion
+wavelimit = 8
+}
+
+{
+mapname = INVU06
+gamemode = invasion
+wavelimit = 9
+}
+
+{
+mapname = INVU07
+gamemode = invasion
+wavelimit = 9
+}
+
+{
+mapname = INVU08
+gamemode = invasion
+wavelimit = 6
+}
+
+{
+mapname = INVU09
+gamemode = invasion
+wavelimit = 11
+}
+
+{
+mapname = INVU10
+gamemode = invasion
+wavelimit = 9
+}
+
+{
+mapname = INVU11
+gamemode = invasion
+wavelimit = 8
+}
+
+{
+mapname = INVUSEC2
+gamemode = invasion
+wavelimit = 15
+}
+
+{
+mapname = INVU12
+gamemode = invasion
+wavelimit = 8
+}
+
+{
+mapname = INVU13
+gamemode = invasion
+wavelimit = 7
+}
+
+{
+mapname = INVU14
+gamemode = INVASION
+wavelimit = 10
+}
+
+{
+mapname = INVU15
+gamemode = invasion
+wavelimit = 10
+}
+
+{
+mapname = INVU16
+gamemode = invasion
+wavelimit = 8
+}
+
+{
+mapname = INVU17
+gamemode = invasion
+wavelimit = 10
+}
+
+{
+mapname = INVU18
+gamemode = invasion
+wavelimit = 10
+}
+
+}
+mapname = INVU19
+gamemode = invasion
+wavelimit = 9
+}
+
+{
+mapname = INVU20
+gamemode = invasion
+wavelimit = 10
+}
+
+{
+mapname = INVU21
+gamemode = invasion
+wavelimit = 9
+}
+
+{
+mapname = INVU22
+gamemode = invasion
+wavelimit = 8
+}
+
+{
+mapname = INVU23
+gamemode = invasion
+wavelimit = 6
+} 
+
+{
+mapname = INVU24
+gamemode = invasion
+wavelimit = 7
+}
+
+{
+mapname = INVU25
+gamemode = invasion
+wavelimit = 11
+}
+
+{
+mapname = INVU26
+gamemode = invasion
+wavelimit = 10
+}
+
+{
+mapname = INVUSEC1
+gamemode = invasion
+wavelimit = 10
+}
+
+//{
+//mapname = INVUWTF
+//gamemode = invasion
+//wavelimit = 10
+//}
+
+{
+mapname = INVU33
+gamemode = invasion
+wavelimit = 5
+}
+
+{
 	mapname = INVUX01
 	gamemode = invasion
 	wavelimit = 8
