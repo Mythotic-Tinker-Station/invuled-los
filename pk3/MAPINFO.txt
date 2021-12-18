@@ -1,14 +1,240 @@
 clearepisodes
 
+episode "INVU01"
+{
+	name "Invasion Unleased"
+}
+
 episode "INVUX01"
 {
-	name = "Legion of Sin"
+	name = "Invasion Unleashed - Legion of Sin"
 }
 
 defaultmap
 {
 	SmoothLighting
 }
+
+
+// Old Invuled Maps
+map INVU01 "Enter: The Future - Mifu"
+{
+	next = INVU02
+	cluster = 1
+	sky1 = RSKY2, 0.20
+	music = VOOD
+	evenlighting 
+}
+
+map INVU02 "Desert Stronghold - Maelstrom"
+{
+	next = INVU03
+	music = D_COMBAT
+}
+
+map INVU03 "Mission : Arena of the fearless - UnTrustable"
+{
+	next = INVU04
+	sky1 = stsky9, 0.3
+	music = none
+}
+
+map INVU04 "Sunken Ruins - StarScream"
+{
+	sky1 = sky1, 0.0
+	music = D_DISAST
+	next = INVU05
+}
+
+map INVU05 "Mayan Temple - Maelstrom"
+{
+	next = INVU06
+	music = D_STLOSE
+}
+
+map INVU06 "Magma - StarScream"
+{
+	music = D_FIRE
+	next = INVU07
+}
+
+map INVU07 "Dead Hard - Maelstrom"
+{
+	next = INVU08
+	secretnext = INVUSEC2
+	music = BABYLON
+}
+
+map INVU08 "Whiteout - VoltlocK"
+{
+	next = INVU09
+	music = D_VTD10
+	sky1 = STSKY10, 0.00
+}
+
+map INVU09 "LockDown - StarScream"
+{
+	music = MELTDOWN
+	next = INVU10
+}
+
+map INVU10 "The Toxic Nightmare - Mifu"
+{
+	next = INVU11
+	cluster = 1
+	sky1 = STSKY14, 0.20
+	music = DIG
+	evenlighting 
+}
+
+map INVU11 "Abandoned Warehouse - Maelstrom"
+{
+	next = INVU12
+	music = D_INV3
+}
+
+map INVUSEC2 "Demented Reality - Maelstrom"
+{
+	next = INVU08
+	music = D_RAVE
+}
+
+map INVU12 "Cursed Lands - Mifu"
+{
+	next = INVU13
+	secretnext = INVUWTF
+	cluster = 1
+	sky1 = STSKY5, 0.17
+	music = EVER1
+	evenlighting 
+}
+
+map INVU13 "Doomed Base - Thomas"
+{
+	next = INVU14
+	cluster = 1
+	sky1 = stsky1, 0.0
+	music = D_vrack
+}
+
+map INVU14 "Death Maze - Doomplayer3"
+{
+	next = INVU15
+	sky1 = STSKY8, 0.0
+	music = Maze01
+}
+
+map INVU15 "The ShapeShift - UnTrustable"
+{
+	next = INVU16
+	cluster = 1
+	music = D_KREED8
+	sky1 = RSKY2, 0.20
+}
+
+map INVU16 "Burial - StarScream"
+{
+	music = D_DOOMED
+	next = INVU17
+	secretnext = INVUSEC1
+}
+
+map INVU17 "The Final Challenge - UnTrustable"
+{
+	music = FUTURMIL
+	sky1 = RSKY2, 0.20
+	next = INVU18
+}
+
+map INVU18 "The Docks - LAKAI CXIV"
+{
+	sky1 = STSKY5, 0
+	next = INVU19
+	music = DOCKS
+	cluster = 1
+}
+
+map INVU19 "Computer Station - LAKAI CXIV"
+{
+	sky1 = STSKY5, 0
+	next = INVU20
+	music = COMSTA
+	cluster = 1
+}
+
+map INVU20 "Bad Memories - ZombieMan"
+{
+	next = INVU21
+	music = D_SCARY
+}
+
+map INVU21 "Making way to the Surface - Folley"
+{
+	music = D_FAST
+	next = INVU22
+	sky1 = stsky1, 0.0
+}
+
+map INVU22 "RIVER GARDEN - LAKAI CXIV"
+{
+	sky1 = I_COWSKY, 0
+	next = INVU23
+	music = RGMIDI
+}
+
+map INVU23 "Greyscale - Forty-Two"
+{
+	sky1 = STSKY8, 0
+	music = IMPULSE
+	next = INVU24
+}
+
+map INVU24 "Night Run - Forty-Two"
+{
+	sky1 = STSKY5, 0.05
+	music = NIGHTRUN
+	next = INVU25
+}
+
+map INVU25 "Trapped 2 Wolfenstein - UnTrustable"
+{
+	sky1 = RSKY2, 0.20
+	Music = D_ULTIMA
+	next = INVU26
+}
+
+map INVU26 "Underworld - Tib"
+{
+	next = INVU33
+	sky1 = stsky1, 0.0
+	music = D_YOUTUB
+}
+
+map INVUSEC1 "Wack-A-Demon - StarScream"
+{
+	music = D_DMSEC
+	next = INVU17
+}
+
+/*
+map INVUWTF "Anime Mansion - UnTrustable"
+{
+	next = INVU13
+	cluster = 1
+	sky1 = RSKY2, 0.20
+	music = DANS
+	evenlighting 
+}
+*/
+
+map INVU33 "Trip to Hell - UnTrustable"
+{
+	next = INVU01
+	sky1 = RSKY2, 0.20
+	music = Q1_02A
+}
+
+
 
 map INVUX01 "Enter: The Future.. Again"
 {
@@ -184,10 +410,12 @@ gameinfo
     weaponslot = 1, "Fist", "Chainsaw"
     weaponslot = 2, "Pistol"
     weaponslot = 3, "Shotgun", "SuperShotgun AutoShotgun"
-    weaponslot = 4, "Chaingun", "Minigun"
-    weaponslot = 5, "RocketLauncher", "GrenadeLauncher"
-    weaponslot = 6, "PlasmaRifle", "RailGun"
-    weaponslot = 7, "BFG9000", "BFG10K"
+    weaponslot = 4, "Chaingun", "Minigun", "SniperRifle", "SSMachinegun", "SSChaingun", "HeavyRifle", "Double_Chaingun"
+    weaponslot = 5, "RocketLauncher", "GrenadeLauncher", "RocketGun", "BioPipebombLauncher"
+    weaponslot = 6, "PlasmaRifle", "RailGun", "HulkPlasmaGun", "ElectricPlasmaGun", "FreezeRifle", "SSFlameThrower"
+    weaponslot = 7, "BFG9000", "BFG10K", "NuclearMissileLauncher"
+    weaponslot = 8, "Deathray", "HaxMaster3000Pro", "Firewand", "FrostFang", "SkullStaff"
+    weaponslot = 9, "Magic", "RGodMode"
     dimcolor = "00 00 FF"
     dimamount = 0.5
     pickupcolor = "00 00 FF"
