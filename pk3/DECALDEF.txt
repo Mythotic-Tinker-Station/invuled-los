@@ -40,3 +40,128 @@ RandomFlipY
 }
 
 Generator FallenShot FallenBall
+
+decal RBBDecal
+{
+   pic PLASMA1
+   Shade "00 00 00"
+   Randomflipx
+   Randomflipy
+}
+
+Generator BaronBall2        RBBDecal
+Generator FatShot2          RBBDecal
+Generator Redentor          RBBDecal
+Generator PlasmaExplosive   RBBDecal
+
+//===========================================================================
+//
+//  Bio Proj decals by ThatOneZDoomer
+//
+//===========================================================================
+
+Fader BioFader
+{
+	DecayStart 10
+	DecayTime 5
+}
+
+Decal BioDecalA
+{
+	Pic BPBPE0
+	X-Scale .5
+	Y-Scale .5
+	Add .5
+	Animator BioFader
+}
+
+Decal BioDecalB
+{
+	Pic BPBPF0
+	X-Scale .5
+	Y-Scale .5
+	Add .5
+	Animator BioFader
+}
+
+DecalGroup BioDecal
+{
+	BioDecalA	1
+	BioDecalB	1
+}
+
+decal FreezeBlastMelt
+{
+	pic BSMEAR1
+	x-scale 1.1
+	y-scale 1.1
+	shade "DD DD FF"
+	randomflipx
+	animator BloodSmearer
+}
+
+Generator FreezeBlast			FreezeBlastMelt
+
+
+
+
+
+
+
+Decal HeavyScorchLower1
+{
+	pic CBALSCR1
+	shade "00 00 00"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+}
+
+Decal HeavyScorchLower2
+{
+	pic CBALSCR2
+	shade "00 00 00"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	randomflipy
+}
+
+DecalGroup HeavyScorchLower
+{
+	HeavyScorchLower1 1
+	HeavyScorchLower2 1
+}
+
+
+
+Decal HeavyScorch1
+{
+	pic CBALSCR1
+	shade "30 30 30"
+	fullbright
+	x-scale 0.4
+	y-scale 0.4
+	animator GoAway
+	lowerdecal HeavyScorchLower
+}
+
+Decal HeavyScorch2
+{
+	pic CBALSCR2
+	shade "30 30 30"
+	fullbright
+	x-scale 0.4
+	y-scale 0.4
+	animator GoAway
+	lowerdecal HeavyScorchLower
+}
+
+DecalGroup HeavyScorch
+{
+	HeavyScorch1 1
+	HeavyScorch2 1
+}
+
+Generator HeavyBullet                   HeavyScorch
