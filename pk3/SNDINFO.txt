@@ -829,3 +829,515 @@ $musicalias SM_MUS4 S_E3M8
 
 // Intermission
 $musicalias SM_Inter S_DM2INT
+
+// Old Invuled Defs
+Ambient1                thndr1
+
+sniper/shot					SNIPSHOT
+sniper/loading					SNIPLOAD
+
+miniguner/attack MINIGUNR
+weapons/minigun dsminign
+weapons/minigunup dsmgup
+weapons/minigunhold dsmgmid
+weapons/minigundown dsmgdown
+
+rock/hit ROCKHIT
+rock/hit ROCKHIT
+rock/hit ROCKHIT
+rock/hit ROCKHIT
+
+monster/attacksound impfire2
+monster/darkflame darkflam
+
+misc/thunder1			thunder1
+misc/thunder2			thunder2
+misc/thunder3			thunder3
+misc/timetofly			timetofl
+misc/letsgo			letsgo
+
+weapons/bigbrn dsbigbrn
+
+emperor/pain                emprpain
+emperor/sight               emprsee
+emperor/death               emprdth
+emperor/act		    empract
+
+emperor/hoof                emprwalk
+
+overlord/sight              oversee
+overlord/pain               overpain
+overlord/death              overdth
+overlord/act                atk1
+
+attack/atk1                 atk1
+attack/atk2                 atk2
+
+duke/kickass		    kick01-i
+duke/oneeyedfreak	    whipyu01
+duke/betonduke		    betduke
+duke/screwedvaction	    vacatn01
+
+misc/cheer		    cheer
+
+//DukeNukem3D Shotgun2
+PigCop/SHOTGNCK                    shotgnck
+PigCop/SHOTGUN7                    shotgun7
+
+//PigCop
+PigCop/Death                pigdy
+PigCop/Pain                 pigpn
+PigCop/See                  pigrg
+PigCop/Active               pigrm
+
+//AssaultTrooper
+Predator/Death              preddy
+Predator/Pain               predpn
+Predator/See                predrg
+Predator/Active             predRM
+Predator/Gunblast           gblasr01
+Predator/Bulithit           bulithit
+
+//AssaultTrooperCaptain
+Predator/Death2             preddy2
+Predator/Pain2              predpn2
+
+//Octabrain
+Octa/Attack1                OCTAAT1 // projectile
+Octa/Attack2                OCTAAT2 // melee
+Octa/Death                  OCTADY
+Octa/Pain                   OCTAPN
+Octa/See                    OCTARG
+Octa/Active                 OCTARM
+
+//Enforcer (lizard)
+Enforcer/Landing            ENFRLAND
+Enforcer/Chaingun           LIZCHNGN
+Enforcer/SpitAttack         LIZSPIT
+Enforcer/SpitHit            LIZSHIT3
+
+//Assault Commander
+Commander/Attack            COMMAT
+Commander/See               COMMRG
+Commander/Pain              COMMPN
+Commander/Death             COMMDY
+Commander/Active            COMMRM
+Commander/Spinning          COMMSP
+
+//----- Cursed lands -----
+
+monster/acosit dsacosit
+
+// Lakai Invu22
+
+serpent/move    SRFC3
+serpent/start   SERPPN1
+serpent/shoot   WTRSWIP
+serpent/death   SRPDTH1
+serpent/erupt   SRFC1
+EXPLODE2	EXPLODE
+ELECTRICEXPLODE	DSRYEX
+RGM		LAUNCH
+monster/acopai dsacopai
+monster/acodth dsacodth
+monster/acoact dsacoact
+monster/blur dsblur
+monster/acosht dsacosht
+monster/acohit dsacohit
+ClericFlameFire         strike3
+ClericFlameExplode      strike1
+ClericFlameCircle       firedhit
+
+//------------------------
+
+
+
+dragonfam/attack dfattack
+comet/launch cometlnc
+comet/explosion cometexp
+dragonfam/attack dfattack
+
+sentry/activate DSBSPACT
+sentry/see DSBSWLK
+
+//
+// Weapons
+//
+
+skeleton/tracex                 dsrevexp
+
+girl/pain dsgldth1
+girl/death dsgldth2
+
+weapons/unmaker dsunmker
+$RANDOM weapons/GROWL { weapons/GROWL1 weapons/GROWL2 weapons/GROWL3 weapons/GROWL4 weapons/GROWL5 weapons/GROWL6 weapons/GROWL7 weapons/GROWL8 }
+weapons/GROWL1 dsgrowl
+weapons/GROWL2 Null
+weapons/GROWL3 Null
+weapons/GROWL4 Null
+weapons/GROWL5 Null
+weapons/GROWL6 Null
+weapons/GROWL7 Null
+weapons/GROWL8 Null
+
+weapons/DRAW dsdraw
+weapons/demonfirepowerfire dsholy3
+
+serpent/move SRFC3
+serpent/start SERPPN1
+serpent/shoot WTRSWIP
+serpent/death SRPDTH1
+serpent/erupt SRFC1
+
+monster/acosit dsacosit
+monster/acopai dsacopai
+monster/acodth dsacodth
+monster/acoact dsacoact
+monster/blur dsblur
+monster/acosht dsacosht
+monster/acohit dsacohit
+
+//multyplyman/see hahasucc
+//multiplyman/see2 haha
+//multiplyman/death sloppy
+//multiplyman/death2 urghh
+//multiplyman/see3 diehuman
+//multiplyman/death3 telporto
+//multiplyman/attack mshot
+
+DRAGON1		DRAGON1
+DRAGON2		DRAGON
+DRAGON3		DRAGON3
+
+$RANDOM ghostspirit/attack { ghostspirit/attack1 ghostspirit/attack2 ghostspirit/attack3 }
+ghostspirit/attack1	GHOST1
+ghostspirit/attack2	GHOST2
+ghostspirit/attack3	GHOST3
+
+//Lakai's DeathRay
+
+DSDETHRY		RAY1
+DSRYEX			RAY2
+
+
+Headcrab/sight		HCALERT1
+$random Headcrab/pain	{ HCPAIN1 HCPAIN2 HCPAIN3 }
+$random Headcrab/death	{ HCDIE1 HCDIE2 }
+$random Headcrab/active { HCIDLE3 HCIDLE4 HCIDLE5 }
+$random Headcrab/attack	{ HCATTACK HCATTAK2 }
+
+HCPAIN1		HCPAIN1
+HCPAIN2		HCPAIN2
+HCPAIN3		HCPAIN3
+HCDIE1		HCDIE1
+HCDIE2		HCDIE2
+HCIDLE3		HCIDLE3
+HCIDLE4		HCIDLE4
+HCIDLE5		HCIDLE5
+HCALERT1	HCALERT1
+HCATTACK	HCATTACK
+HCATTAK2	HCATTAK2
+
+//Redneck Rampage
+
+Hulk/sight                 HULKROAM
+Hulk/Attack                HULKATTK
+Hulk/Death                 HULKDIE
+Hulk/Lazer                 HULKLZR
+Hulk/Pain                  HULKPAIN
+Hulk/Attack2               HULKSPIT
+Hulk/See                   HULKRECG
+Laser/Explode              LASERA
+
+$random world/footsteps { step1 step2 step3 step4 step5 step6 step7 step8 step9 step10 step11 step12 step13 step14 }
+
+step1					FSTEP1
+step2					FSTEP2
+step3					FSTEP3
+step4					FSTEP4
+step5					FSTEP5
+step6					FSTEP6
+step7					FSTEP7
+step8					FSTEP8
+step9					FSTEP9
+step10					FSTEP10
+step11					FSTEP11
+step12					FSTEP12
+step13					FSTEP13
+step14					FSTEP14
+
+Elevator\Button    PF_METAL
+Surprise           SURPRISE
+
+// Instant Monster Killer
+
+dsbospn   DSBOSPN
+
+// Wings of Wrath (Heretic powerup)
+
+WingPowerUp     WINGPOW
+
+$RANDOM Cat/Death { Cat/Death1 Cat/Death2 Cat/Death3 }
+Cat/Death1     DEATH01
+Cat/Death2     DEATH02
+Cat/Death3     DEATH03
+
+Cat/Pain       DEATH01
+
+$RANDOM Cat/See { Cat/See1 Cat/See2 Cat/See3 Cat/See4 Cat/See5 }
+Cat/See1       MEOW01
+Cat/See2       MEOW02
+Cat/See3       MEOW03
+Cat/See4       MEOW04
+Cat/See5       MEOW05
+
+Cat/Active     PURR01
+
+
+$RANDOM ROTTGod/See { God1 God2 God3 }
+God1           P_GOD1
+God2           P_GOD2
+God3           P_GOD3
+
+God/Pickup     P_PGOD
+God/Over       P_LOSE
+
+GodFire/See    P_GRAVHT
+GodFire/Active P_FIRE
+
+//$Random Turret/Death { Turret12 Turret36 }
+//Turret/Fire TURRET01
+//Turret12 TURRET12
+//Turret36 TURRET36
+
+//Plague Spiders
+
+SPIDDIE1       SPIDDIE1
+SPIDDIE2       SPIDDIE2
+SPIDDIE3       SPIDDIE3
+SPIDDIE4       SPIDDIE4
+
+PlagueSpider/Acive   SPIDROAM
+PlagueSpider/See     SPIDSPOT
+PlagueSpider/Pain    SPIDPAIN
+$Random PlagueSpider/Death { SPIDDIE1 SPIDDIE2 SPIDDIE3 SPIDDIE4}
+
+
+
+weapons/firewand                dsflamer
+
+FrostFang/Raise	FSTFUP
+FrostFang/Loop	FSTFLOOP
+FrostFang/Fire1	FSTFFIR1
+FrostFang/Hit1	FSTFHIT1
+FrostFang/Fire2 FSTFFIR2
+FrostFang/Hit2	FSTFHIT2
+FrostFang/Lower	FSTFDOWN
+
+//*****SKULL STAFF*****//
+
+weapons/skulprojshot	skulfire
+weapons/skulprojdeath   skuldie
+IronDoom/impact		ripslop
+Spike/impact		wtrhit
+
+
+
+
+
+
+
+
+$Random SatanServant/Provocation { Prov01 Prov02 Prov03 Prov04 Prov05 Prov06 Prov07 Prov08 Prov09 Prov10 Prov11 Prov12 Prov13 Prov14 Prov15 Prov16 }
+Prov01         PROVOK01
+Prov02         PROVOK02
+Prov03         PROVOK03
+Prov04         PROVOK04
+Prov05         PROVOK05
+Prov06         PROVOK06
+Prov07         PROVOK07
+Prov08         PROVOK08
+Prov09         PROVOK09
+Prov10         PROVOK10
+Prov11         PROVOK11
+Prov12         PROVOK12
+Prov13         GIVE_IT1
+Prov14         GIVE_IT2
+Prov15         GIVE_IT3
+Prov16         PRAY_TO
+
+$Random SatanServant/See { Welcome01 Welcome02 Welcome03 Welcome04 Welcome05 Welcome06 }
+Welcome01      WELCOM00
+Welcome02      WELCOM01
+Welcome03      WELCOM02
+Welcome04      WELCOM03
+Welcome05      MORESOUL
+Welcome06      GOD_CRE1
+Welcome07      GOD_CRE2
+Welcome08      GOD_CRE3
+
+$Random SatanServant/Talking { Bla01 Bla02 Bla03 Bla04 Bla05 Bla06 Bla07 Bla08 Bla09 Bla10 Bla11 Bla12 Bla13 Bla14 Bla15 Bla16 Bla17 Bla18}
+Bla01          WEAPONS
+Bla02          WEAKLIN0
+Bla03          WEAKLIN1
+Bla04          WEAKLIN2
+Bla05          GO_ON_4F
+Bla06          DEFEATME
+Bla07          DONTFEAR
+Bla08          ETERNAL1
+Bla09          ETERNAL2
+Bla10          IM_YOUR1
+Bla11          IM_YOUR2
+Bla12          JOIN_ME
+Bla13          LAUGH1
+Bla14          MY_RULES
+Bla15          NEVERWIN
+Bla16          LAUGH2
+Bla17          KILL_YOU
+Bla18          LAUGH3
+
+No_Succ1       NO_SUCC1
+No_Succ2       NO_SUCC2
+
+SatanServant/Death    NOOOO
+
+$Random SatanServant/Fun { Fun01 Fun02 }
+Fun01          BLABLABL
+Fun02          OH_MY_FG
+
+$Random SatanServant/Worry { Stop01 Stop02 Stop03 Stop04 Stop05 }
+Stop01         STOP_IT1
+Stop02         STOP_IT2
+Stop03         STOP_IT3
+Stop04         STOP_IT4
+Stop05         PAY_FOR
+
+SatanServant/SummonArise             S_ARISE
+SatanServant/SummonDarkness          S_DARKNS
+SatanServant/SummonDeath             S_DEATH
+
+$Random SatanServant/SummonExile { Satan/SummonExile1 Satan/SummonExile2 }
+SatanServant/SummonExile1            S_EXILE1
+SatanServant/SummonExile2            S_EXILE2
+
+SatanServant/SummonHellfire          S_HFIRE
+SatanServant/SummonFrozen            S_FROZEN
+SatanServant/SummonRegeneration      S_REGEN
+SatanServant/SummonFirestorm         S_FSTORM
+SatanServant/SummonEyeAttack         S_FIRSIG
+SatanServant/SummonImprisson         S_IMPRIS
+
+$Random SatanServant/SummonBounce { S_BOUNC1 S_BOUNC2 S_BOUNC3 S_BOUNC4 S_BOUNC5 }
+S_BOUNC1       S_BOUNC1
+S_BOUNC2       S_BOUNC2
+S_BOUNC3       S_BOUNC3
+S_BOUNC4       S_BOUNC4
+S_BOUNC5       S_BOUNC5
+
+SatanServant/SummonPunishment        S_PUNISH
+
+$Random SatanServant/SummonPlague { S_PLAGU1 S_PLAGU2 }
+S_PLAGU1       S_PLAGU1
+S_PLAGU2       S_PLAGU2
+
+SatanServant/SummonIllusion          S_ILLUSS
+SatanServant/SummonLightning         S_LIGHTN
+
+$Random SatanServant/Hurt { Hurt01 Hurt02 }
+Hurt01         BETTER01
+Hurt02         BETTER02
+
+$Random SatanServant/Feed { Satan/Feed01 Satan/Feed02 Satan/Feed03 }
+Satan/Feed01   FEED_ME1
+Satan/Feed02   FEED_ME2
+Satan/Feed03   FEED_ME3
+
+SatanServant/SummonDecorChange       S_DECOR
+
+// the end conversation between Satan and his servant.
+
+Chat01                MY_SAT1
+Chat02                MY_LORD1
+$Random Chat03       {MY_SAT2 MY_SAT2A}
+Chat04                MY_LORD2
+Chat05                MY_SAT3
+$Random Chat06       {MY_SAT4A MY_SAT4}
+$Random Chat07       {MY_SAT5 MY_SAT5A}
+Chat08                MY_LORD3
+Chat09                MY_SAT6
+
+Weapons/BioReady			BIOREADY
+Weapons/BioFire				BIOSHOOT
+Weapons/BioProj				BIOBURST
+
+electricplasma/shoot		PZAPSEE	
+electricplasma/hit		PZAPHIT
+electricplasma/charge		PZAPCHRG
+
+weapons/iceshot		DSICESHT
+weapons/icehit		DSICEHIT
+
+weapons/riflefre	        dshvyrfl
+weapons/rifleup		        dsriflup
+
+weapons/nuclearmissilecharge	dsnukcrg
+weapons/nuclearmissileexplode	dsnukxpl
+weapons/nuclearmissileburn	dsnukbrn
+weapons/nuclearmissileflamehit	dsflwexp
+weapons/nuclearmissileflamewall	dsflwgrn
+
+
+// WOLFENSTEIN3D
+
+guard/sight    SCHSEE
+guard/attack   DSPISTOL
+guard/pain     SCHPAIN
+guard/active   SCHSEE
+
+$Random guard/death { guard/death01 guard/death02 guard/death03 }
+guard/death01   SCHDTH1
+guard/death02   SCHDTH2
+guard/death03   SCHDTH3
+
+dog/sight         DOGSEE
+dog/melee         DOGATTK1
+dog/pain          DOGPAIN
+dog/death         DOGDTH1
+dog/death2        DOGDTH2
+dog/active        DOGSEE
+dssgtdth          DSSGTDTH
+
+soldier/sight      SOLSEE
+soldier/attack     SOLFIRE1
+soldier/death      SOLDETH
+soldier/active     SOLSEE
+soldier/see        SOLSEE
+soldier/death      SOLDETH
+
+hans/sight        HANSSEE         
+hans/death        HANSDTH
+hans/shot2        HANSSHT2
+
+mutant/death      MUTDTH1
+
+officer/sight     OFFSEE
+officer/death     OFFDTH2
+
+WolfMachinegunShot   WLFMCHGN
+
+Wolf/Yeah         WOLFYEAH
+
+WolfDoorOpen      WLFDROPN
+WolfDoorClose     WLFDRCLS
+
+WolfSecret        SECRET1
+
+WolfSwitch        WLFSWTCH
+
+WolfPlatformStart WLFELVT1
+WolfPlatformStop  WLFELVT2
+
+SSCHAIN           SSCHAIN1
+
+FlameShot         FLAMEST
+FlameEnd          FLAMEEND
