@@ -2,7 +2,7 @@ clearepisodes
 
 episode "INVU01"
 {
-	name "Invasion Unleased"
+	name = "Invasion Unleased"
 }
 
 episode "INVUX01"
