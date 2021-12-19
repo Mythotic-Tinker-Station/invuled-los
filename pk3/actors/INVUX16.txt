@@ -81,31 +81,6 @@ ACTOR BuzzlerTurret
 }
 
 
-
-ACTOR Firefly
-{
-  Radius 13
-  Height 8
-  Speed 25
-  +HEXENBOUNCE
-  -NOGRAVITY
-  damage 0
-  Gravity 0.2
-  scale 0.35
-  +RANDOMIZE
-  +RIPPER
-  +BLOODLESSIMPACT
-  +CLIENTSIDEONLY
-  RenderStyle Add 
-  States
-  {
-  Spawn:
-    APLS AB 5 Bright A_Fadeout(0.3)
- Loop
-  }
-}
-
-
 ACTOR FireflyCannon : PlasmaRifle 669
  {
  Weapon.AmmoType "Clip"
