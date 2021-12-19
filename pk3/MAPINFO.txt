@@ -102,7 +102,7 @@ map INVUSEC2 "Demented Reality - Maelstrom"
 map INVU12 "Cursed Lands - Mifu"
 {
 	next = INVU13
-	secretnext = INVUWTF
+	secretnext = INVU13
 	cluster = 1
 	sky1 = STSKY5, 0.17
 	music = EVER1
@@ -229,7 +229,7 @@ map INVUWTF "Anime Mansion - UnTrustable"
 
 map INVU33 "Trip to Hell - UnTrustable"
 {
-	next = INVU01
+	next = INVUX01
 	sky1 = RSKY2, 0.20
 	music = Q1_02A
 }
